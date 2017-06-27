@@ -7,3 +7,7 @@ storage
 .apm
 .node-gyp
 .npm
+github.cson
+init.coffee
+keymap.cson
+nohup.out
