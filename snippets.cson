@@ -1,0 +1,705 @@
+# http://flight-manual.atom.io/using-atom/sections/snippets/
+
+'.source.js':
+  'Define Object (Ext)':
+    'prefix': 'define'
+    'body': """
+      Ext._define('${1:adm.diarias.solicitationchange.Window}', {
+        extend: '${2:ext.type.object}',
+      });
+      $3
+    """
+
+  'Create Object (Ext)':
+    'prefix': 'create_object'
+    'body': 'Ext._create(\'${1:namespace.object.path}\', {}).show();
+    $2'
+
+  'Create Ext-Window Restful':
+    'prefix': 'window_restful'
+    'body': """
+      Ext._define('${1:namespace.object.path}', {
+        extend: 'core.RestfulWindow',
+        rest: '${2:namespace.object.path.Restful}',
+
+          formpanel$3
+      });
+      $4
+    """
+
+  'Create FormPanel (Ext)':
+    'prefix': 'formpanel'
+    'body': """
+      ${1:getFormPanel}: function($2) {
+        if(!this._${3:formPanel}) {
+          this._${3:formPanel} = Ext._create('Ext.form.FormPanel', {
+          border: ${4:false},
+          frame: ${5:true},
+          items: [
+            {$6},
+          ]
+          });
+        }
+
+        return this._${3:formPanel};
+      }
+      $7
+    """
+
+  'Create Restful (Ext)':
+    'prefix': 'restful'
+    'body': """
+      Ext._define('${1:namespace.object.path}', {
+        extend: 'core.Restful',
+
+        resource: '${2:RestfulControllerName}',
+
+        getFields: function(cfg) {
+          if(!this._${3:fields}) {
+            this._${3:fields} = ${1:namespace.object.path}.superclass.getFields.call(this, cfg).concat([
+              {type: "string", name: "${4:field1}"},
+              {type: "date", name: "${5:field2}", dateFormat: "d/m/Y H:i"},
+              {type: "int", name: "${6:field3}", useNull: false},
+              {type: "bool", name: "${7:field4}", useNull: false},
+            ]);
+          }
+
+          return this._${3:fields};
+        }
+      });
+      $8
+    """
+
+  'Generate Report (New)':
+    'prefix': 'report_new'
+    'body': """
+      engine.mq.Report.request({
+          report: '${1:/to/mpe/path/to/Report}',
+          el: this.getEl(),
+          waitMessage: '${2:Gerando relatorio ...}',
+          params: {
+              outfile: '${3:prefix_name_file}_' + new Date().format("d/m/Y"),
+              report_name: '${4:Nome do Relatorio}',
+              param1: ${5:any_data_value},
+              param2: ${6:any_data_value},
+              param3: ${7:any_data_value},
+          }
+      });
+      $8
+    """
+
+  'Create Manage (Ext)':
+    'prefix': 'manager'
+    'body': """
+      Ext._define('${1:namespace.object.path}.Manage', {
+        extend: 'toolkit.widget.TabPanel',
+
+        get${2:NomeDoGrid}: function() {
+          if(!this._${3:grid})
+            this._${3:grid} = Ext._create('${1:namespace.object.path}.Grid', {
+              region: '${4:center}',
+              hideItemsToolbar: ['${5:remove}'],
+              hideActions: ['${6:remove}'],
+              allowRemove: ${7:false}
+            });
+
+          return this._${3:grid};
+        },
+
+        constructor: function(cfg) {
+          cfg = cfg ? cfg : {};
+
+          Ext.applyIf(
+            cfg,
+            {
+               title: '${8:Gestor de Alguma coisa}'
+            }
+          );
+
+          Ext.apply(
+            cfg,
+            {
+              layout: 'border',
+              items: this.get${2:NomeDoGrid}()
+            }
+          );
+
+          ${1:namespace.object.path}.Manage.superclass.constructor.call(this, cfg);
+        }
+      });
+      $9
+    """
+
+  'Confirm Button (Ext)':
+    'prefix': 'confirm_button'
+    'body': """
+    ${1:cache}: function() {
+      Ext.Msg.show({
+        title: '${2:Texto da barra de título}',
+        msg: '${3:Mensagem do corpo da janela}', // CANCEL, ERROR, INFO, OK, OKCANCEL, QUESTION, WARNING, YESNO, YESNOCANCEL
+        icon: ${4:Ext.Msg.QUESTION},
+        buttons: ${5:Ext.Msg.YESNOCANCEL},
+        scope: this,
+        fn: function(btn) {
+          // switch(btn) {
+          //   case 'yes':
+          //     ${6:alert('SIIIIIIIM');}
+          //     break;
+          //   case 'no':
+          //     ${7:alert('NÃÃÃÃÃÃÃO');}
+          //     break;
+          //   case 'cancel':
+          //     ${8:return};
+          // }
+          if(btn == 'yes')
+              ${6:alert('SIIIIIIIM');}
+          else if(btn == 'no')
+              ${7:alert('NÃÃÃÃÃÃÃO');}
+          else if(btn == 'cancel')
+              ${8:return};
+        }
+      });
+    },
+    $9
+    """
+
+  'Create Item (Ext)':
+    'prefix': 'create_item'
+    'body': """
+    createItem: function(classDef) {
+      Ext._create(classDef, {
+        action: 'create',
+        params: this.getParams(),
+        values: {},
+        callback: {
+          success: {
+            scope: this,
+            fn: function() {
+              this.getStore().reload();
+            }
+          }
+        }
+      }).show();
+    },
+    $1
+    """
+
+  'Fn (Ext)':
+    'prefix': 'fn'
+    'body': """
+    get${1:NomeDaCache}: function(${2:args}) {
+      if (!this._${3:nomeDaCache})
+        this._${3:nomeDaCache} = Ext._create('${4:CustomField}', {
+          name: '${5:Nome do campo}',
+          fieldLabel: '${6:Nome do rótulo}',
+          width: ${7:200},
+          $8
+        });
+
+      return this._${3:nomeDaCache};
+    }
+    $9
+    """
+
+  'Action Button (Ext)':
+    'prefix': 'action_button'
+    'body': """
+    get${1:NomeAcao}Button: function(cfg) {
+      if(!this._${2:nome_da_acao}Button)
+        this._${2:nome_da_acao}Button = Ext._create('Ext.Button', {
+          text: '${3:Texto}',
+          scope: this,
+          handler: this.${4:funcao_do_botao},
+        });
+
+      return this._${2:nome_da_acao}Button;
+    },
+    $5
+    """
+
+  'Get Buttons (Ext)':
+    'prefix': 'get_buttons'
+    'body': """
+    getButtons: function(cfg) {
+      if(!this._buttons)
+        this._buttons = [
+          this.get${1:Sign}Button(cfg),
+          ${2:'->'},
+        ].concat(${3:namespace.do.objeto}.Window.superclass.getButtons.call(this, cfg));
+
+      return this._buttons;
+    },
+    $4
+    """
+
+  'Filter-Menu (Ext)':
+    'prefix': 'filter_menu'
+    'body': """
+    ${1:person}Filter: function() {
+      if (!this._${1:person})
+        this._${1:person} = Ext._create('Ext.menu.CheckItem', {
+          text: '${2:Pessoa}',
+          checked: ${3:true},
+          scope: this,
+          handler: function() {
+            this.toggle${4:KindPerson}('${5:pessoa}');
+          }
+        });
+
+      return this._${1:person};
+    },
+
+    getFilterMenu: function() {
+      return [
+        {
+          text: '${6:Tipo}',
+          menu: [
+            this.${1:person}Filter(),
+            '-',
+            {
+              text: 'Desfazer todos os filtros',
+              scope: this,
+              hideOnClick: ${7:false},
+              handler: function() {
+                this.setFilter([]);
+                this.${1:person}Filter().setChecked(${3:true});
+              }
+            }
+          ]
+        },
+      ];
+    },
+
+    toggle${4:KindPerson}: function(tipo) {
+      if(!this._filter${4:KindPerson})
+        this._filter${4:KindPerson} = ['${5:pessoa}'];
+
+      if(this._filter${4:KindPerson}.indexOf(tipo) >= 0)
+        this._filter${4:KindPerson}.remove(tipo);
+      else
+        this._filter${4:KindPerson}.push(tipo);
+
+      this.setFilterProperty('${8:kind__in}', this._filter${4:KindPerson}, 1000);
+    },
+    $9
+    """
+
+  'Grid (Ext)':
+    'prefix': 'create_grid'
+    'body': """
+    get${1:NomeDo}Grid: function(${2:cfg}) {
+      if (!this._${3:grid})
+        this._${3:grid} = Ext._create('${4:namespace.to.some}.Grid', {
+          region: 'center',
+          title: 'Título',
+          // margins: '0 0 0 0',
+          // flex: 1,
+          // layout: 'fit',
+          // allowRemove: true,
+          // allowCreate: true,
+          // allowUpdate: true,
+          // columnAction: true,
+          // gridAutoLoad: true,
+          // hideItemsToolbar: ['add', 'edit', 'remove', 'search', 'download'],
+          // hideActions: ['add', 'edit', 'remove'],
+        });
+
+      return this._${3:grid};
+    }
+    $5
+    """
+
+  'Action Menu (Ext)':
+    'prefix': 'action_menu'
+    'body': """
+    get${1:Nome}Action: function(cfg) {
+      if(!this._${2:nome}Action)
+        this._${2:nome}Action = Ext._create('Ext.Button', {
+          text: '${3:Novo}',
+          iconCls: '${4:icon-app icon-app-nome}',
+          menu: ${5:namespace.do.grid}.getNewMenu(this)
+        });
+
+      return this._${2:nome}Action;
+    },
+    $6
+    """
+
+  'Selection Model (Ext)':
+    'prefix': 'selection_model'
+    'body': """
+    this._${1:nameOfObect}Grid.getSelectionModel().on({
+      scope: this,
+      selectionchange: function(selm) {
+        var selection = selm.getSelections();
+
+        if(selection.length > 0)
+          this.${1:nameOfObject}(selection[0]);
+        else
+          this.${1:nameOfObject}(null);
+      }
+    });
+    $2
+    """
+
+  'Tool Bar (Ext)':
+    'prefix': 'tool_bar'
+    'body': """
+    ${1:applySearch}: function() {
+      var textSearch = this.getToolbar().getComponent('${2:searchBox}');
+      this.getStore().baseParams.search = textSearch.getValue();
+      this.getStore().load({});
+    },
+
+    getToolbar: function() {
+      if(!this._toolBar)
+        this._toolBar = new Ext.Toolbar({
+          items: [
+            {
+              xtype: 'textfield',
+              id: '${2:searchBox}',
+              emptyText: '${3:Texto a ser localizado}',
+              width: ${4:375},
+              enableKeyEvents: ${5:true},
+              listeners: {
+                scope: this,
+                specialkey: function(field, e) {
+                  if(e.getKey() == e.ENTER || e.getKey() == e.TAB)
+                    this.${1:applySearch}();
+                }
+              }
+            },
+            {
+              text: '${6:Buscar}',
+              scope: this,
+              handler: this.${1:applySearch},
+              iconCls: '${7:icon-app icon-app-nome}'
+            }
+          ]
+        });
+
+      return this._toolBar;
+    }
+    $8
+    """
+
+  'M2M Field (Ext)':
+    'prefix': 'm2m_field'
+    'body': """
+    constructor: function(cfg) {
+      cfg = cfg || {};
+
+      Ext.applyIf(cfg, {
+        disableSaveAndNew: true,
+        saveAndContinue: {
+          scope: this,
+          fn: function(instance) {
+            this.get${1:NomeDoCampo}().objectId(instance.pk);
+            this.oId = instance.pk;
+            this.action = 'update';
+          }
+        }
+      });
+
+      ${2:namespace.desta.janela}.Window.superclass.constructor.call(this, cfg);
+    },
+
+    get${1:NomeDoCampo}: function(${3:cfg}) {
+      if(!this._${4:nomeDoCampo})
+        this._${4:nomeDoCampo} = Ext._create('core.fields.RelatedRestfulField', {
+          iconCls: '${5:icon-app icon-app-nome}',
+          fieldLabel: '${6:Texto Identificador}',
+          title: '${6:Texto Identificador}',
+          hideLabel: ${7:true},
+          name: '${8:nome_no_modelo}',
+          displayField: 'unicode',
+          allowBlank: false,
+          relatedname: '${9:nome_do_relacionamento}',
+          rest: this.rest,
+          sourceRest: '${10:namespace.do.campo.relacionado}.Restful',
+          oId: this.oId || ${3:cfg}.oId,
+          width: ${11:350},
+          height: ${12:170},
+          border: false
+        });
+
+      return this._${4:nomeDoCampo};
+    }
+    $13
+    """
+
+  'Observer (Ext)':
+    'prefix': 'observer'
+    'body': """
+    constructor: function(cfg) {
+      cfg = cfg || {};
+
+      Ext.applyIf(cfg, {
+        disableSaveAndNew: true,
+        saveAndContinue: {
+          scope: this,
+          fn: function(instance) {
+            this.${1:nomeDoModelo}(instance.pk);
+            this.oId = instance.pk;
+            this.action = 'update';
+          }
+        }
+      });
+
+      ${2:namespace.desta.janela}.Window.superclass.constructor.call(this, cfg);
+
+      this.${1:nomeDoModelo}(cfg.oId === undefined ? null : cfg.oId);
+    },
+
+    ${1:nomeDoModelo}: function(value, observe) {
+      observe = (observe === undefined ? true : observe);
+
+      if(value !== undefined) {
+        this._${1:nomeDoModelo}Grid = value;
+
+        if(observe)
+          this.observe${3:NomeDoModelo}();
+      }
+
+      return this._${1:nomeDoModelo}Grid;
+    },
+
+    observe${3:NomeDoModelo}: function() {
+      var value = this.${1:nomeDoModelo}();
+
+      if(value) {
+        this.get${4:M2M}Field().objectId(value); // componente m2m
+
+        // Habilitar e filtrar Grid
+        this.get${5:NomeDo}Grid().enable();
+        this.get${5:NomeDo}Grid().setParam('${6:campo_parametro}', value);
+        this.get${5:NomeDo}Grid().setFilterProperty('${6:campo_parametro}', value, 0);
+      } else  {
+        // Desabilitar e limpar Grid
+        this.get${5:NomeDo}Grid().disable();
+        this.get${5:NomeDo}Grid().setParam('${6:campo_parametro}', 0);
+        this.get${5:NomeDo}Grid().setFilterProperty('${6:campo_parametro}', value, 0, false);
+        this.get${5:NomeDo}Grid().getStore().removeAll();
+      }
+    },
+    $7
+    """
+
+  'Set Filter Property (Ext)':
+    'prefix': 'set_filter_property'
+    'body': """
+    this.get${1:NomeDo}Grid().setFilterProperty('${2:campo_parametro}', ${3:value_of_pk}, ${4:stage(numero)});
+    $5
+    """
+
+  'Set Param (Ext)':
+    'prefix': 'set_param'
+    'body': """
+    this.get${1:NomeDo}Grid().setParam('${2:retirement_prevision}', ${3:value_of_pk});
+    $4
+    """
+
+  'Singleton (Ext)':
+    'prefix': 'singleton'
+    'body': """
+    singleton: {
+      classDB: [],
+
+      register: function(name, label, iconCls, Class) {
+        ${1:namespace.deste.Grid}.classDB.push({
+          name: name,
+          label: label,
+          iconCls: iconCls,
+          Class: Class
+        });
+      },
+
+      getClassByName: function(name) {
+        var Class = false;
+
+        ${1:namespace.deste.Grid}.classDB.forEach(
+          function(item) {
+            if(item.name == name) {
+              Class = item.Class;
+              return false;
+            }
+          }
+        );
+
+        return Class;
+      },
+
+      getNewMenu: function(scope) {
+        if(${1:namespace.deste.Grid}.classDB.length > 0) {
+          return ${1:namespace.deste.Grid}.classDB.map(
+            function(item) {
+              return {
+                text: item.label,
+                scope: scope,
+                iconCls: item.iconCls,
+                handler: function() {
+                  this.createItem(item.Class);
+                }
+              };
+            }
+          );
+        }
+        else
+          return [
+            {
+              text: 'Nenhum tipo foi especificado',
+              enable: false
+            }
+          ];
+      }
+    },
+    $2
+    """
+
+  'Text Field (Ext)':
+    'prefix': 'text_field'
+    'body': """
+    get${1:NomeDoCampo}Field: function(${2:cfg}) {
+      if (!this._${3:nomeDoCampo})
+        this._${3:nomeDoCampo} = Ext._create('Ext.form.TextField', {
+          maxLength: ${4:80},
+          allowBlank: ${5:true},
+          fieldLabel: '${6:Cônjuge}',
+          name: '${7:nome_conjuge}',
+          disabled: ${8:true},
+          width: ${9:200}
+        });
+
+      return this._${3:nomeDoCampo};
+    }
+    $10
+    """
+
+  'Update Item (Ext)':
+    'prefix': 'update_item'
+    'body': """
+    updateItem: function(record) {
+      if(record instanceof Ext.Button)
+        record = undefined;
+
+      var selected = core.nullValue(record, this.getSelectionModel().getSelected());
+
+      if(selected) {
+        var Class = ${1:namespace.deste.Grid}.getClassByName(selected.get('${2:kind}'));
+        Ext._create(Class, {
+          action: 'update',
+          oId: selected.get('pk'),
+          values: 'remote',
+          params: this.getParams(),
+          callback: {
+            success: {
+              scope: this,
+              fn: function() {
+                this.getStore().reload();
+              }
+            }
+          }
+        }).show();
+      }
+      else
+        Ext.Msg.show({
+          title: 'Editando',
+          icon: Ext.Msg.ERROR,
+          buttons: Ext.Msg.OK,
+          msg: 'Primeiro selecione um item para editar.'
+        });
+    },
+    $3
+    """
+
+  'Data HttpProxy (Ext)':
+    'prefix': 'data_http_proxy'
+    'body': """
+    proxy: Ext._create('Ext.data.HttpProxy', {
+      url: core.callAction('${1:NomeDoController}', '${2:nome_do_metodo}')
+    })$3
+    """
+
+  'Data JsonReader (Ext)':
+    'prefix': 'data_json_reader'
+    'body': """
+    reader: Ext._create('Ext.data.JsonReader', {
+      totalProperty: 'count',
+      root: 'collection',
+      fields: [
+        {name: 'pk', type: 'int'},
+        {name: 'description', type: 'string'},
+      ]
+    })$3
+    """
+
+  'Data Store (Ext)':
+    'prefix': 'data_store'
+    'body': """
+    store: Ext._create('Ext.data.Store', {
+      proxy: Ext._create('Ext.data.HttpProxy', {
+        url: core.callAction('${1:NomeDoController}', '${2:nome_do_metodo}')
+      }),
+      reader: Ext._create('Ext.data.JsonReader', {
+        totalProperty: '${3:count}',
+        root: '${4:collection}',
+        fields: [
+          {name: 'pk', type: 'int'},
+          {name: 'description', type: 'string'},
+        ]
+      })
+    })$5
+    """
+
+  'Ajax Request (Ext)':
+    'prefix': 'ajax_request'
+    'body': """
+    Ext.Ajax.request({
+      url: '${1:path_of/file.json}',
+      callback: function() {${2:console.log()}},
+      success: function(${3:response}, ${4:opts}) {
+        var ${5:obj} = Ext.decode(${3:response}.responseText);
+        console.dir(${5:obj});
+      },
+      failure: function(${3:response}, ${4:opts}) {
+        console.log('Falha no servidor código status ' + ${3:response}.status);
+      },
+      params: {
+        ${6:param_1}: '${7:value_1}'
+        ${8:param_2}: '${9:value_2}'
+      },
+      // method: "$10"
+    });$11
+    """
+
+  'Error Msg Show (Ext)':
+    'prefix': 'error_msg_show'
+    'body': """
+    Ext.Msg.show({
+        title: ${1:this.title},
+        icon: ${2:Ext.Msg.ERROR},
+        buttons: ${3:Ext.Msg.OK},
+        msg: '${4:obj.message}'
+    });$5
+    """
+
+  'Question Msg Show (Ext)':
+    'prefix': 'question_msg_show'
+    'body': """
+    Ext.Msg.show({
+        title: ${1:this.title},
+        icon: ${2:Ext.Msg.QUESTION},
+        buttons: ${3:Ext.Msg.YESNO},
+        msg: '${4:"Nao sei o que lá não sei o que lá não sei o que lá?"}',
+        scope: ${5:this},
+        fn: function(btn) {
+          if (btn == "no") return;
+        }
+    });$6
+    """
+
+  # ' (Ext)':
+    # 'prefix': ''
+    # 'body': """
+
+    # """

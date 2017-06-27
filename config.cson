@@ -1,0 +1,87 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "911e6fe7-110a-42f9-a15d-917b0494efb3"
+    python:
+      max_line_length: 250
+  "atom-ctags": {}
+  "atom-hg": {}
+  "autocomplete-python":
+    useSnippets: "all"
+  autosave: {}
+  core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".flowconfig"
+        ".hgrc"
+      ]
+      "source.json": [
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
+    disabledPackages: [
+      "wrap-guide"
+      "linter-sass-lint"
+      "autocomplete-ctags"
+      "linter-shellcheck"
+      "atom-hg"
+    ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "*.pyc"
+      ".ipython"
+      "var"
+      "env"
+      "db-vol"
+      "images"
+      "js-vol"
+      "mongo-vol"
+    ]
+    openEmptyEditorOnStart: false
+    telemetryConsent: "limited"
+  editor:
+    fontFamily: "Ubuntu Mono"
+    fontSize: 20
+    lineHeight: 1.2
+    scrollPastEnd: true
+    showIndentGuide: true
+  "exception-reporting":
+    userId: "9471388c-7f84-4bec-b1d9-b41c423e3b4b"
+  "file-watcher":
+    promptWhenChange: true
+  "highlight-line": {}
+  "highlight-selected":
+    onlyHighlightWholeWords: false
+  "linter-flake8":
+    ignoreErrorCodes: [
+      "F821"
+    ]
+    maxLineLength: 250
+  "linter-jshint":
+    lintInlineJavaScript: true
+  "linter-ui-default":
+    panelHeight: 136
+  "markdown-preview":
+    useGitHubStyle: true
+  minimap:
+    absoluteMode: true
+    adjustAbsoluteModeHeight: true
+    disablePythonDocLinks: true
+    plugins:
+      linter: true
+      linterDecorationsZIndex: 0
+  "one-dark-ui": {}
+  "symbol-gen": {}
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
