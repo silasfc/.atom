@@ -1,5 +1,27 @@
 # http://flight-manual.atom.io/using-atom/sections/snippets/
 
+'.source.coffee':
+  'Snippeter':
+    'prefix': 'snippeter'
+    'body': """
+    '.source.${1:scope}':
+      '${2:Description}':
+        'prefix': '${3:prefixo}'
+        \'body\'\: \"""
+    $4
+        \"""
+    """
+
+  'Snippeter No Selector':
+    'prefix': 'snippeterns'
+    'body': """
+    '${1:Description}':
+      'prefix': '${2:prefixo}'
+      \'body\'\: \"""
+    $3
+      \"""
+    """
+
 '.source.js':
   'Define Object (Ext)':
     'prefix': 'define'
@@ -703,3 +725,434 @@
     # 'body': """
 
     # """
+
+'.source.python':
+  'BigIntegerField (Models)':
+    'prefix': 'big_integer_field'
+    'body': """
+    ${1:nome_do_campo} = models.BigIntegerField(verbose_name='${2:Descrição}', null=${3:True}$4)$5
+    """
+
+  'BooleanField (Models)':
+    'prefix': 'boolean_field'
+    'body': """
+    ${1:nome_do_campo} = models.BooleanField(verbose_name='${2:Descrição}', default=${3:True}$4)$5
+    """
+
+  'CharField (Models)':
+    'prefix': 'char_field'
+    'body': """
+    ${1:nome_do_campo} = models.CharField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}$5)$6
+    """
+
+  'CustomField (Models)':
+    'prefix': 'custom_field'
+    'body': """
+    ${1:nome_do_campo} = models.${2:TipoDoCampo}(verbose_name = '${3:Descrição}'${4})$5
+    """
+
+  'DateField (Models)':
+    'prefix': 'date_field'
+    'body': """
+    ${1:nome_do_campo} = models.DateField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
+    """
+
+  'DateTimeField (Models)':
+    'prefix': 'date_time_field'
+    'body': """
+    ${1:nome_do_campo} = models.DateTimeField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
+    """
+
+  'EmailField (Models)':
+    'prefix': 'email_field'
+    'body': """
+    ${1:nome_do_campo} = models.EmailField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
+    """
+
+  'FloatField (Models)':
+    'prefix': 'float_field'
+    'body': """
+    ${1:nome_do_campo} = models.FloatField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
+    """
+
+  'ForeignKey (Models)':
+    'prefix': 'foreign_key'
+    'body': """
+    ${1:nome_do_campo} = models.ForeignKey(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', null=${5:True}${6})$7
+    """
+
+  'IntegerField (Models)':
+    'prefix': 'integer_field'
+    'body': """
+    ${1:nome_do_campo} = models.IntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
+    """
+
+  'M2MField (Models)':
+    'prefix': 'm2m_field'
+    'body': """
+    ${1:nome_do_campo} = models.ManyToManyField(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', through=${5:ModeloDeLigacao}${6})$7
+    """
+
+  'NullBolleanField (Models)':
+    'prefix': 'null_boolean_field'
+    'body': """
+    ${1:nome_do_campo} = models.NullBooleanField(verbose_name='${2:Descrição}', default=${3:True}${4})$5
+    """
+
+  'O2OField (Models)':
+    'prefix': 'o2o_field'
+    'body': """
+    ${1:nome_do_campo} = models.OneToOneField(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', null=${5:True}${6})$7
+    """
+
+  'PositiveIntegerField (Models)':
+    'prefix': 'positive_integer_field'
+    'body': """
+    ${1:nome_do_campo} = models.PositiveIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
+    """
+
+  'PositiveSmallIntegerField (Models)':
+    'prefix': 'positive_small_integer_field'
+    'body': """
+    ${1:nome_do_campo} = models.PositiveSmallIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
+    """
+
+  'SlugField (Models)':
+    'prefix': 'slug_field'
+    'body': """
+    ${1:nome_do_campo} = models.SlugField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
+    """
+
+  'SmallIntegerField (Models)':
+    'prefix': 'small_integer_field'
+    'body': """
+    ${1:nome_do_campo} = models.SmallIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
+    """
+
+  'TextField (Models)':
+    'prefix': 'text_field'
+    'body': """
+    ${1:nome_do_campo} = models.TextField(verbose_name='${2:Descrição}', blank=${3:True}${4})$5
+    """
+
+  'TimeField (Models)':
+    'prefix': 'time_field'
+    'body': """
+    ${1:nome_do_campo} = models.TimeField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
+    """
+
+  'URLField (Models)':
+    'prefix': 'url_field'
+    'body': """
+    ${1:nome_do_campo} = models.URLField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
+    """
+
+  'Call Action (Controller)':
+    'prefix': 'call_action_controller'
+    'body': """
+    def ${1:name_action}(self, *args):
+        obj = {
+            'success': False,
+            'message': '${2:Nada foi feito ainda.}'
+        }
+
+        try:
+            with transaction.atomic():
+                for ${3:s} in ${4:NomeDoModelo}.objects.filter(${5:pk}__in=self.request.POST.getlist('${5:pk}')):
+                    ${3:s}.${6:acao_a_executar}()
+        except Exception as e:
+            log.exception(e)
+            obj.update(message=e.message)
+        else:
+            obj.update(success=True)
+
+        self.response['content-type'] = 'text/javascript'
+        self.response.write(json.dumps(obj))$7
+    """
+
+  'Exception (Models)':
+    'prefix': 'exception'
+    'body': """
+    except ${1:Exception} as ${2:e}:
+        log.debug(${2:e})
+    $3
+    """
+
+  'Get Query (Controller)':
+    'prefix': 'get_query'
+    'body': """
+    from contrib.middleware import get_current_user
+
+    def get_query(self):
+        query = super(${1:Prefixo}${2:Modelo}, self).get_query()
+        user = get_current_user()
+
+        query = query.filter(${3:campo_parametro}__in=user.servidor.first().work_locations)
+
+        return query
+    ${4}
+    """
+
+  'Model To Dict (Controller)':
+    'prefix': 'model_to_dict'
+    'body': """
+    def model_to_dict(self, instance):
+        _dict_ = super(${1:Prefixo}${2:Modelo}, self).model_to_dict(instance)
+
+        _dict_.update({
+            '${3:icons}': self.get_icons(instance),
+            '${4:rest_name_field}': instance.${5:item_da_instancia}
+        })
+
+        return _dict_
+    $6
+    """
+
+  'JSON Write (Controller)':
+    'prefix': 'json_write'
+    'body': """
+    def json(self, args=[]):
+        self.response['content-type'] = 'text/javascript'
+        self.response.write('Ext._create("${1:namespace.do.manage}")')
+    $2
+    """
+
+  'Register JS (__init__)':
+    'prefix': 'register_js'
+    'body': """
+    # -*- coding: utf-8 -*-
+    from default.views import Application
+
+    Application.register_javascript('/%(context)s/static/${1:app}/${2:módulo}/${3:Prefixo}Restful.js')
+    Application.register_javascript('/%(context)s/static/${1:app}/${2:módulo}/${3:Prefixo}Window.js')
+    Application.register_javascript('/%(context)s/static/${1:app}/${2:módulo}/${3:Prefixo}Grid.js')
+    Application.register_javascript('/%(context)s/static/${1:app}/${2:módulo}/${3:Prefixo}Manage.js')
+    $4
+    """
+
+  'Empty Migration':
+    'prefix': 'empty_migration'
+    'body': """
+    # -*- coding: utf-8 -*-
+    from __future__ import unicode_literals
+    from django.db import models, migrations
+
+
+    def ${3:metodo_da_tarefa}(apps, schema_editor):
+        ${4:pass}
+
+
+    class Migration(migrations.Migration):
+
+        dependencies = [
+            ('${1:app}', '${2:xxyz_nome_da_migracao}'),
+        ]
+
+        operations = [
+            migrations.RunPython(${3:metodo_da_tarefa})
+        ]
+
+    $5
+    """
+
+  'Create Model (Model)':
+    'prefix': 'create_model'
+    'body': """
+    class ${1:Classe}(${2:models.Model}):
+        \"""${3:Docstring da classe}.
+
+        \"""
+        ${4:pass}
+
+        class Meta:
+            verbose_name = u'${5:Nome no singular}'
+
+        def __unicode__(self):  # __str__(self)
+            ${6:pass}
+
+        def save(self, *args, **kwargs):
+            super(${1:Classe}, self).save(*args, **kwargs)
+    $7
+    """
+
+  'Register CSS (__init__)':
+    'prefix': 'register_css'
+    'body': """
+    # -*- coding: utf-8 -*-
+    from default.views import Application
+
+    Application.register_stylesheet('/%(context)s/static/${1:app}/images/${2:modulo}/${3:arquivo}.css')
+    $4
+    """
+
+  'Raise (Exception)':
+    'prefix': 'raise_exception'
+    'body': """
+    raise_msg = u'${1:Mensagem a ser exibida para a exceção}'
+    raise ${2:Exception}(raise_msg)
+    $3
+    """
+
+  'Signal (Signals)':
+    'prefix': 'create_signal'
+    'body': """
+    # -*- coding: utf-8 -*-
+    from contrib.utils import getLogger
+    from django.db.models.signals import post_delete, post_save
+    from django.dispatch import receiver
+    from ${1:app}.${2:module}.models import ${3:Modelo}
+
+    log = getLogger('${4:Identificador do sinal}')
+
+
+    @receiver(post_delete, sender=${3:Modelo})
+    @receiver(post_save, sender=${3:Modelo})
+    def ${5:nome_da_acao_a_executar}(sender, instance, **kwargs):
+        # log.info(u'${Texto qualquer} %s - %s' % (instance, instance.${6:item_da_instancia}))
+        instance.${6:item_da_instancia}.save()
+
+    $7
+    """
+
+  'RestfulDry (Controller)':
+    'prefix': 'restfuldry'
+    'body': """
+    # -*- coding: utf-8 -*-
+    from contrib.newrest import RestfulDRY
+    from ${1:pkg.module}.models import ${2:Modelo}
+    from contrib.middleware import get_current_user
+
+
+    class ${3:Prefixo}${2:Modelo}(RestfulDRY):
+
+        _model = ${2:Modelo}
+
+        # force_upper = False
+
+        # full_text_index = (
+        #     '${4:lookup_do_queryset}__icontains',
+        # )
+
+        # exclude_fields = ['${5:campo_herdado}_ptr']
+
+        # force_persist_boolean_fields = ['${6:campo_booleano}']
+
+        # force_upper = ${7:True}
+
+        def json(self, args=[]):
+            self.response['content-type'] = 'text/javascript'
+            self.response.write('Ext._create("${8:namespace.do.manage}")')
+
+        def get_icons(self, instance):
+            icon_${10:nome}_map = {
+                '${10:opcao_icone_1}': {'iconCls': '${11:icon-xx icon-wxyz-namespace}', 'title': '${12:Descrição}'},
+            }
+
+            ${10:nome} = icon_${10:nome}_map.get(instance.${13:item_da_instancia})
+
+            return ${10:nome}
+
+
+        def model_to_dict(self, instance):
+            _dict_ = super(${3:Prefixo}${2:Modelo}, self).model_to_dict(instance)
+
+            _dict_.update({
+                'icons': self.get_icons(instance),
+            })
+
+            return _dict_
+
+        def get_query(self):
+            query = super(${3:Prefixo}${2:Modelo}, self).get_query()
+            user = get_current_user()
+
+            query = query.filter(${14:campo_parametro}__in=user.servidor.first().work_locations)
+
+            return query
+    $15
+    """
+
+  'Delete (Models)':
+    'prefix': 'delete'
+    'body': """
+    def delete(self, *args, **kwargs):
+        super(${1:NomeDaClasse}, self).delete(*args, **kwargs)
+    $2
+    """
+
+  'Get Icons (Models)':
+    'prefix': 'get_icons'
+    'body': """
+    @property
+    def get_icons(self):
+
+        icon_${1:nome}_map = {
+            '${2:opcao_icone_1}': {'iconCls': '${3:icon-xx icon-wxyz-namespace}', 'title': '${4:Descrição}'},
+            '${5:opcao_icone_2}': {'iconCls': '${6:icon-xx icon-wxyz-namespace}', 'title': '${7:Descrição}'},
+            '${8:opcao_icone_3}': {'iconCls': '${9:icon-xx icon-wxyz-namespace}', 'title': '${10:Descrição}'},
+        }
+
+        ${1:nome} = icon_${1:nome}_map.get(self.${11:campo_da_instancia})
+
+        return ${1:nome}
+    $12
+    """
+
+  'Make Command (Manage)':
+    'prefix': 'make_command'
+    'body': """
+    # -*- coding: utf-8 -*-
+    from django.core.management.base import BaseCommand
+    from optparse import make_option
+    from django.utils import translation
+
+    log = getLogger(__name__)
+
+
+    class Command(BaseCommand):
+        help = u'''
+        ${1:Texto que descreve o comando}
+        '''
+        verbose = '${2:False}'
+
+        option_list = BaseCommand.option_list + (
+            make_option(
+                '-${3:x}',
+                '--${4:xporextenso}',
+                action='store_true',
+                dest='${5:parametro_x}',
+                default=${6:None},
+                help=u'${7:Texto de auxílio}'
+            ),
+            make_option(
+                '-${8:y}',
+                '--${9:yporextenso}',
+                action='store_true',
+                dest='${10:parametro_y}',
+                default=${11:None},
+                help=u'${12:Texto de auxílio}'
+            ),
+        )
+
+        def __init__(self, *args, **kwargs):
+            super(Command, self).__init__(*args, **kwargs)
+
+        def handle(self, *args, **options):
+            if (options['${5:parametro_x}'] is None and options['${10:parametro_y}'] is None):
+                print('Nenhum parametro foi passado. Consulte as opcoes passando o parametro -h')
+            else:
+                if options['${5:parametro_x}']:
+                    self.${13:tarefa_do_parametro_x}()
+                if options['${10:parametro_y}']:
+                    self.${15:tarefa_do_parametro_y}()
+
+            translation.deactivate()
+
+        def ${13:tarefa_do_parametro_x}(self):
+            ${14:pass}
+
+        def ${15:tarefa_do_parametro_y}(self):
+            ${16:pass}
+
+    $17
+    """

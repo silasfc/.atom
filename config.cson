@@ -28,6 +28,8 @@
       "autocomplete-ctags"
       "linter-shellcheck"
       "atom-hg"
+      "atomizr"
+      "file-watcher"
     ]
     ignoredNames: [
       ".git"
@@ -60,6 +62,7 @@
     promptWhenChange: true
   "highlight-line": {}
   "highlight-selected":
+    hideHighlightOnSelectedWord: true
     onlyHighlightWholeWords: false
   "linter-flake8":
     ignoreErrorCodes: [
@@ -70,6 +73,7 @@
     lintInlineJavaScript: true
   "linter-ui-default":
     panelHeight: 136
+    showPanel: true
   "markdown-preview":
     useGitHubStyle: true
   minimap:
