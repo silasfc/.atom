@@ -40,13 +40,13 @@
   'Create Ext-Window Restful':
     'prefix': 'window_restful'
     'body': """
-      Ext._define('${1:namespace.object.path}', {
+      Ext._define('${1:namespace.object.path}.Window', {
         extend: 'core.RestfulWindow',
-        rest: '${2:namespace.object.path.Restful}',
+        rest: '${1:namespace.object.path}.Restful',
 
-          formpanel$3
+          formpanel$2
       });
-      $4
+      $3
     """
 
   'Create FormPanel (Ext)':
@@ -306,7 +306,7 @@
     $9
     """
 
-  'Grid (Ext)':
+  'Create Grid (Ext)':
     'prefix': 'create_grid'
     'body': """
     get${1:NomeDo}Grid: function(${2:cfg}) {
@@ -329,6 +329,51 @@
       return this._${3:grid};
     }
     $5
+    """
+
+  'Grid Restful':
+    'prefix': 'grid_restful'
+    'body': """
+    Ext._define('${1:namespace.path.of}.Grid', {
+        extend: 'core.RestfulGrid',
+
+        restWindow: '${1:namespace.path.of}.Window',
+
+        configOrderToolBar: [${2:'add', 'edit', 'remove', '-', '->', '-'}],
+
+        getColumnModel: function() {
+            if(!this._columnModel)
+                this._columnModel = Ext._create(
+                    'Ext.grid.ColumnModel',
+                    [
+                        Ext._create('Ext.grid.RowNumberer'),
+                        {header: '${3:Coluna 1}', dataIndex: '${4:coluna_1}', id: 'autoExpandColumn'},
+                        {header: '${5:Coluna 2}', dataIndex: '${6:coluna_2_unicode}', width: ${7:130}, hidden: ${8:true}, sortable: ${9:true}},
+                        {header: '${10:Coluna 3}', dataIndex: '${11:coluna_3}', renderer: Ext.util.Format.dateRenderer('d/m/Y H:i'), width: ${12:120}, hidden: ${13:true}, sortable: ${14:true}}
+                    ]
+                );
+
+            return this._columnModel;
+        },
+
+        constructor: function(cfg) {
+            cfg = core.nullValue(cfg, {});
+
+            Ext.applyIf(
+                cfg,
+                {
+                    columnAction: false
+                }
+            );
+
+            ${1:namespace.path.of}.Grid.superclass.constructor.call(this, cfg);
+        }
+    });
+
+    core.RestfulGrid.register(
+        '${1:namespace.path.of}.Restful',
+        '${1:namespace.path.of}.Grid'
+    );$15
     """
 
   'Action Menu (Ext)':
@@ -720,11 +765,78 @@
     });$6
     """
 
-  # ' (Ext)':
-    # 'prefix': ''
-    # 'body': """
+  'Form TextField (xtype)':
+    'prefix': 'form_text_field'
+    'body': """
+    {
+      xtype: 'textfield',
+      fieldLabel: '${1:Nome}',
+      name: '${2:nome}',
+      allowBlank: ${3:false},
+      maxLength: ${4:128},
+      width: ${5:200}
+    }$6
+    """
 
-    # """
+  'Form NumberField (xtype)':
+    'prefix': 'form_number_field'
+    'body': """
+    {
+      xtype: 'numberfield',
+      fieldLabel: '${1:Nome}',
+      name: '${2:nome}',
+      allowBlank: ${3:false},
+      allowDecimals: ${4:false},
+      maxLength: ${5:128},
+      width: ${6:200}
+    }$7
+    """
+
+  'Form ChoiceField (xtype)':
+    'prefix': 'form_choice_field'
+    'body': """
+    {
+        xtype: 'choicefield',
+        fieldLabel: '${1:Field Label}',
+        hiddenName: '${2:field_name}',
+        choiceId: '${3:app}.${4:CONSTANT_CHOICES}'
+    }$5
+    """
+
+  'Form Panel (ExtJS)':
+    'prefix': 'form_panel'
+    'body': """
+    get${1:Panel}: function(${2:cfg}) {
+        if(!this._${3:panel})
+            this._${3:panel} = Ext._create('Ext.Panel', {
+                layout: 'form',
+                title: '${5:Principal}',
+                iconCls: '${6:icon-rh} ${7:icon-core-main-tab}',
+                border: ${8:false},
+                frame: ${9:true},
+                scope: this,
+                height: ${10:500},
+                items: [
+                  {
+                    $11
+                  }
+                ]
+            });
+        return this._${3:panel};
+    }$12
+    """
+
+  'Autocomplet Rest (ExtJS)':
+    'prefix': 'autocomplet_rest'
+    'body': """
+    {
+        xtype: 'rest-autocompletefield',
+        fieldLabel: "Label",
+        allowBlank: false,
+        rest: "namespace.to.Restful",
+        name: "field_name"
+    },
+    """
 
 '.source.python':
   'BigIntegerField (Models)':
@@ -897,15 +1009,14 @@
     'prefix': 'model_to_dict'
     'body': """
     def model_to_dict(self, instance):
-        _dict_ = super(${1:Prefixo}${2:Modelo}, self).model_to_dict(instance)
+        _dict_ = super(${1:PrefixoModelo}, self).model_to_dict(instance)
 
         _dict_.update({
-            '${3:icons}': self.get_icons(instance),
-            '${4:rest_name_field}': instance.${5:item_da_instancia}
+            '${2:icons}': self.get_icons(instance),
+            '${3:rest_name_field}': instance.${4:item_da_instancia}
         })
 
-        return _dict_
-    $6
+        return _dict_$5
     """
 
   'JSON Write (Controller)':
@@ -1027,37 +1138,37 @@
 
         _model = ${2:Modelo}
 
-        # force_upper = False
-
         # full_text_index = (
         #     '${4:lookup_do_queryset}__icontains',
         # )
 
-        # exclude_fields = ['${5:campo_herdado}_ptr']
+        # exclude_fields = ['${5:campo_herdado_ptr}']
 
         # force_persist_boolean_fields = ['${6:campo_booleano}']
 
         # force_upper = ${7:True}
 
+        # force_persist_clear_m2m = [$8]
+
         def json(self, args=[]):
             self.response['content-type'] = 'text/javascript'
-            self.response.write('Ext._create("${8:namespace.do.manage}")')
+            self.response.write('Ext._create("${9:namespace.do.manage}")')
 
         def get_icons(self, instance):
             icon_${10:nome}_map = {
-                '${10:opcao_icone_1}': {'iconCls': '${11:icon-xx icon-wxyz-namespace}', 'title': '${12:Descrição}'},
+                '${11:opcao_icone_1}': {'iconCls': '${12:icon-xx icon-wxyz-namespace}', 'title': '${13:Descrição}'},
             }
 
-            ${10:nome} = icon_${10:nome}_map.get(instance.${13:item_da_instancia})
+            ${10:nome} = icon_${10:nome}_map.get(instance.${14:item_da_instancia})
 
             return ${10:nome}
-
 
         def model_to_dict(self, instance):
             _dict_ = super(${3:Prefixo}${2:Modelo}, self).model_to_dict(instance)
 
             _dict_.update({
                 'icons': self.get_icons(instance),
+                'rest_name_field': instance.item_da_instancia
             })
 
             return _dict_
@@ -1066,10 +1177,10 @@
             query = super(${3:Prefixo}${2:Modelo}, self).get_query()
             user = get_current_user()
 
-            query = query.filter(${14:campo_parametro}__in=user.servidor.first().work_locations)
+            query = query.filter(${15:campo_parametro}__in=user.servidor.first().work_locations)
 
             return query
-    $15
+    $16
     """
 
   'Delete (Models)':
@@ -1155,4 +1266,60 @@
             ${16:pass}
 
     $17
+    """
+
+  'CustomAppConfig (Apps.Py)':
+    'prefix': 'custom_apps_py'
+    'body': """
+    # -*- coding:utf-8 -*-
+
+    '''
+    No escopo de módulo NÃO DEVE HAVER import do settings ou qualquer outro módulo ou aplicativo que tenha
+    importação do settings do Django.
+
+    Solução: Criar modulos separados e fazer import via importlib
+    a partir do escopo do método ready do AppConfig
+    '''
+
+    import importlib
+    from django.apps import AppConfig
+
+    class SampleConfig(AppConfig):  # Substituir "Sample" pelo nome que preferir dar ao AppConfig
+        name = ''  # Caminho completo para o app. Ex: rh.gfp.dirf
+
+        controllers = [
+            # Aqui devem ser listados os caminhos dos controllers do app. Ex: web.api.cms.metadata
+        ]
+
+        def ready(self):
+            '''
+            O carregamento de partes necessárias ao app.
+            '''
+            register_statics()
+            connect_signals()
+            # carregar qualquer outra coisa necessária ao app
+
+    def connect_signals():
+        '''Seus sinais devem ser carregados aqui.
+
+           importlib.import_module('nome.canonico.do.modulo.de.sinais')
+        '''
+        pass
+
+    def register_statics():
+        '''O registro dos arquivos estáticos do app deve ser feito aqui.
+
+        Ex:
+
+            Application = importlib.import_module('default.views').Application
+
+            Application.register_javascript('/%(context)s/static/web/js/shortcuts.js')
+            Application.register_stylesheet('/%(context)s/static/web/css/styles.css')
+        '''
+
+        Application = importlib.import_module('default.views').Application
+        # Application.register_javascript('/%(context)s/caminho/para/o/arquivo.js')
+        # Application.register_stylesheet('/%(context)s/caminho/para/o/arquivo.css')
+
+
     """

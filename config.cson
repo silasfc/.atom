@@ -6,9 +6,14 @@
       max_line_length: 250
   "atom-ctags": {}
   "atom-hg": {}
+  "autocomplete-plus":
+    defaultProvider: "Fuzzy"
   "autocomplete-python":
+    enableTouchBar: true
     useSnippets: "all"
   autosave: {}
+  "command-palette":
+    preserveLastSearch: true
   core:
     customFileTypes:
       "source.ini": [
@@ -24,12 +29,7 @@
       ]
     disabledPackages: [
       "wrap-guide"
-      "linter-sass-lint"
-      "autocomplete-ctags"
-      "linter-shellcheck"
-      "atom-hg"
-      "atomizr"
-      "file-watcher"
+      "welcome"
     ]
     ignoredNames: [
       ".git"
@@ -52,7 +52,7 @@
     telemetryConsent: "limited"
   editor:
     fontFamily: "Ubuntu Mono"
-    fontSize: 20
+    fontSize: 19
     lineHeight: 1.2
     scrollPastEnd: true
     showIndentGuide: true
@@ -73,7 +73,6 @@
     lintInlineJavaScript: true
   "linter-ui-default":
     panelHeight: 136
-    showPanel: true
   "markdown-preview":
     useGitHubStyle: true
   minimap:
@@ -83,9 +82,17 @@
     plugins:
       linter: true
       linterDecorationsZIndex: 0
+  notifications:
+    showErrorsInDevMode: true
+  nuclide:
+    "nuclide-home":
+      showHome: false
+    "nuclide-python":
+      includeOptionalArguments: true
   "one-dark-ui": {}
   "symbol-gen": {}
   "tree-view":
     hideIgnoredNames: true
   welcome:
     showOnStartup: false
+  whitespace: {}
