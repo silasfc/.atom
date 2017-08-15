@@ -52,7 +52,7 @@
     telemetryConsent: "limited"
   editor:
     fontFamily: "Ubuntu Mono"
-    fontSize: 19
+    fontSize: 18
     lineHeight: 1.2
     scrollPastEnd: true
     showIndentGuide: true

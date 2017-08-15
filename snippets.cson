@@ -623,6 +623,20 @@
     $2
     """
 
+  'Custom Field (Ext)':
+    'prefix': 'custom_field'
+    'body': """
+    get${1:NomeDoCampo}Field: function(${2:cfg}) {
+      if (!this._${3:nomeDoCampo})
+        this._${3:nomeDoCampo} = Ext._create('Ext.custom.Field', {
+          $4
+        });
+
+      return this._${3:nomeDoCampo};
+    },
+    $5
+    """
+
   'Text Field (Ext)':
     'prefix': 'text_field'
     'body': """
@@ -722,21 +736,21 @@
     'prefix': 'ajax_request'
     'body': """
     Ext.Ajax.request({
-      url: '${1:path_of/file.json}',
-      callback: function() {${2:console.log()}},
-      success: function(${3:response}, ${4:opts}) {
-        var ${5:obj} = Ext.decode(${3:response}.responseText);
-        console.dir(${5:obj});
+      url: core.callAction('${1:Controller}', '${2:file.json}'),
+      callback: function() {${3:console.log();}},
+      success: function(${4:response}, ${5:opts}) {
+        var ${6:obj} = Ext.decode(${4:response}.responseText);
+        console.dir(${6:obj});
       },
-      failure: function(${3:response}, ${4:opts}) {
-        console.log('Falha no servidor código status ' + ${3:response}.status);
+      failure: function(${4:response}, ${5:opts}) {
+        console.log('Falha no servidor código status ' + ${4:response}.status);
       },
       params: {
-        ${6:param_1}: '${7:value_1}'
-        ${8:param_2}: '${9:value_2}'
+        ${7:param_1}: '${8:value_1}',
+        ${9:param_2}: '${10:value_2}'
       },
-      // method: "$10"
-    });$11
+      // method: "$11"
+    });$12
     """
 
   'Error Msg Show (Ext)':
