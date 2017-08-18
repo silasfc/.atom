@@ -26,7 +26,7 @@
   'Define Object (Ext)':
     'prefix': 'define'
     'body': """
-      Ext._define('${1:adm.diarias.solicitationchange.Window}', {
+      Ext._define('${1:namespace.object.path.Window}', {
         extend: '${2:ext.type.object}',
       });
       $3
