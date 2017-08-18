@@ -72,7 +72,7 @@
   "linter-jshint":
     lintInlineJavaScript: true
   "linter-ui-default":
-    panelHeight: 136
+    panelHeight: 167
   "markdown-preview":
     useGitHubStyle: true
   minimap:

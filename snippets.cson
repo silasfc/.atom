@@ -990,7 +990,7 @@
             log.exception(e)
             obj.update(message=e.message)
         else:
-            obj.update(success=True)
+            obj.update(success=True, message=u'Ação realizada com sucesso.')
 
         self.response['content-type'] = 'text/javascript'
         self.response.write(json.dumps(obj))$7
@@ -1309,14 +1309,22 @@
             '''
             O carregamento de partes necessárias ao app.
             '''
-            register_statics()
+            connect_plugins()
             connect_signals()
+            register_statics()
             # carregar qualquer outra coisa necessária ao app
+
+    def connect_plugins():
+        '''Seus plugins devem ser carregados aqui.
+
+           importlib.import_module('nome.canonico.do.modulo.do.plugin')
+        '''
+        pass
 
     def connect_signals():
         '''Seus sinais devem ser carregados aqui.
 
-           importlib.import_module('nome.canonico.do.modulo.de.sinais')
+           importlib.import_module('nome.canonico.do.modulo.do.sinal')
         '''
         pass
 
