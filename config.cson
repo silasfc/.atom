@@ -1,36 +1,6 @@
 "*":
-  "atom-beautify":
-    general:
-      _analyticsUserId: "911e6fe7-110a-42f9-a15d-917b0494efb3"
-    python:
-      max_line_length: 250
-  "atom-ctags": {}
-  "atom-hg": {}
-  "autocomplete-plus":
-    defaultProvider: "Fuzzy"
-  "autocomplete-python":
-    enableTouchBar: true
-    useSnippets: "all"
-  autosave: {}
-  "command-palette":
-    preserveLastSearch: true
   core:
-    customFileTypes:
-      "source.ini": [
-        ".buckconfig"
-        ".flowconfig"
-        ".hgrc"
-      ]
-      "source.json": [
-        "BUCK.autodeps"
-      ]
-      "source.python": [
-        "BUCK"
-      ]
-    disabledPackages: [
-      "wrap-guide"
-      "welcome"
-    ]
+    autoHideMenuBar: true
     ignoredNames: [
       ".git"
       ".hg"
@@ -40,59 +10,19 @@
       "Thumbs.db"
       "desktop.ini"
       "*.pyc"
-      ".ipython"
-      "var"
-      "env"
-      "db-vol"
-      "images"
-      "js-vol"
-      "mongo-vol"
     ]
-    openEmptyEditorOnStart: false
     telemetryConsent: "limited"
   editor:
     fontFamily: "Ubuntu Mono"
     fontSize: 18
+    invisibles: {}
     lineHeight: 1.2
-    scrollPastEnd: true
     showIndentGuide: true
   "exception-reporting":
-    userId: "9471388c-7f84-4bec-b1d9-b41c423e3b4b"
-  "file-watcher":
-    promptWhenChange: true
-  "highlight-line": {}
-  "highlight-selected":
-    hideHighlightOnSelectedWord: true
-    onlyHighlightWholeWords: false
+    userId: "406e0d5e-7da1-48a6-bcfb-3e6b9a035ac8"
   "linter-flake8":
-    ignoreErrorCodes: [
-      "F821"
-    ]
     maxLineLength: 250
-  "linter-jshint":
-    lintInlineJavaScript: true
-  "linter-ui-default":
-    panelHeight: 167
-  "markdown-preview":
-    useGitHubStyle: true
-  minimap:
-    absoluteMode: true
-    adjustAbsoluteModeHeight: true
-    disablePythonDocLinks: true
-    plugins:
-      linter: true
-      linterDecorationsZIndex: 0
-  notifications:
-    showErrorsInDevMode: true
-  nuclide:
-    "nuclide-home":
-      showHome: false
-    "nuclide-python":
-      includeOptionalArguments: true
-  "one-dark-ui": {}
-  "symbol-gen": {}
   "tree-view":
     hideIgnoredNames: true
   welcome:
     showOnStartup: false
-  whitespace: {}

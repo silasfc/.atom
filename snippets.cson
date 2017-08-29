@@ -852,6 +852,12 @@
     },
     """
 
+  'IconCls':
+    'prefix': 'iconcls_grid'
+    'body': """
+    {header: '', dataIndex: 'icons', width: ${1:110}, renderer: core.rendererIconGrid, menuDisabled: true},
+    """
+
 '.source.python':
   'BigIntegerField (Models)':
     'prefix': 'big_integer_field'
