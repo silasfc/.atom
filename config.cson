@@ -1,6 +1,16 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "ce4963c0-bcad-44f2-a016-1597ecc14845"
   core:
     autoHideMenuBar: true
+    disabledPackages: [
+      "wrap-guide"
+      "sort-lines"
+      "linter-htmlhint"
+      "linter-jshint"
+      "linter-csslint"
+    ]
     ignoredNames: [
       ".git"
       ".hg"
@@ -22,6 +32,8 @@
     userId: "406e0d5e-7da1-48a6-bcfb-3e6b9a035ac8"
   "linter-flake8":
     maxLineLength: 250
+  "linter-ui-default":
+    showPanel: true
   "tree-view":
     hideIgnoredNames: true
   welcome:

@@ -736,6 +736,7 @@
     'prefix': 'ajax_request'
     'body': """
     Ext.Ajax.request({
+      scope: this,
       url: core.callAction('${1:Controller}', '${2:file.json}'),
       callback: function() {${3:console.log();}},
       success: function(${4:response}, ${5:opts}) {
