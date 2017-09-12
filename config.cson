@@ -2,14 +2,14 @@
   "atom-beautify":
     general:
       _analyticsUserId: "ce4963c0-bcad-44f2-a016-1597ecc14845"
+  "autocomplete-python":
+    useSnippets: "all"
   core:
-    autoHideMenuBar: true
     disabledPackages: [
-      "wrap-guide"
       "sort-lines"
-      "linter-htmlhint"
-      "linter-jshint"
-      "linter-csslint"
+      "wrap-guide"
+      "Hydrogen"
+      "linter-eslint"
     ]
     ignoredNames: [
       ".git"
@@ -20,6 +20,11 @@
       "Thumbs.db"
       "desktop.ini"
       "*.pyc"
+      "env"
+      "var"
+      "db-vol"
+      "mongo-vol"
+      "js-vol"
     ]
     telemetryConsent: "limited"
   editor:
@@ -33,6 +38,7 @@
   "linter-flake8":
     maxLineLength: 250
   "linter-ui-default":
+    panelHeight: 196
     showPanel: true
   "tree-view":
     hideIgnoredNames: true

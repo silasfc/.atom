@@ -257,18 +257,18 @@
   'Filter-Menu (Ext)':
     'prefix': 'filter_menu'
     'body': """
-    ${1:person}Filter: function() {
-      if (!this._${1:person})
-        this._${1:person} = Ext._create('Ext.menu.CheckItem', {
-          text: '${2:Pessoa}',
+    ${1:custom}Filter: function() {
+      if (!this._${1:custom})
+        this._${1:custom} = Ext._create('Ext.menu.CheckItem', {
+          text: '${2:Texto}',
           checked: ${3:true},
           scope: this,
           handler: function() {
-            this.toggle${4:KindPerson}('${5:pessoa}');
+            this.toggle${4:CustomKind}('${5:pessoa}');
           }
         });
 
-      return this._${1:person};
+      return this._${1:custom};
     },
 
     getFilterMenu: function() {
@@ -276,7 +276,7 @@
         {
           text: '${6:Tipo}',
           menu: [
-            this.${1:person}Filter(),
+            this.${1:custom}Filter(),
             '-',
             {
               text: 'Desfazer todos os filtros',
@@ -284,26 +284,38 @@
               hideOnClick: ${7:false},
               handler: function() {
                 this.setFilter([]);
-                this.${1:person}Filter().setChecked(${3:true});
+                this.${1:custom}Filter().setChecked(${3:true});
               }
             }
           ]
         },
       ];
-    },
+    }
 
-    toggle${4:KindPerson}: function(tipo) {
-      if(!this._filter${4:KindPerson})
-        this._filter${4:KindPerson} = ['${5:pessoa}'];
+    toggle${4:CustomKind}: function(tipo) {
+      if(!this._filter${4:CustomKind})
+        this._filter${4:CustomKind} = ['${5:pessoa}'];
 
-      if(this._filter${4:KindPerson}.indexOf(tipo) >= 0)
-        this._filter${4:KindPerson}.remove(tipo);
+      if(this._filter${4:CustomKind}.indexOf(tipo) >= 0)
+        this._filter${4:CustomKind}.remove(tipo);
       else
-        this._filter${4:KindPerson}.push(tipo);
+        this._filter${4:CustomKind}.push(tipo);
 
-      this.setFilterProperty('${8:kind__in}', this._filter${4:KindPerson}, 1000);
+      this.setFilterProperty('${8:kind__in}', this._filter${4:CustomKind}, 1000);
     },
     $9
+    """
+
+  'Clean Filter':
+    'prefix': 'clean_filter'
+    'body': """
+    cleanFilter: function() {
+      // Undo Filter, Exclude and finally reload (autoload true)
+      // this.removeFilterProperty('property__lookup', 10, false);
+      // this.removeFilterProperty('property__lookup', -20, true);
+      // or...
+      // this.setFilter([]);
+    }
     """
 
   'Create Grid (Ext)':
