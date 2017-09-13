@@ -8,8 +8,8 @@
     disabledPackages: [
       "sort-lines"
       "wrap-guide"
-      "Hydrogen"
-      "linter-eslint"
+      "linter-htmlhint"
+      "symbol-gen"
     ]
     ignoredNames: [
       ".git"
@@ -25,6 +25,7 @@
       "db-vol"
       "mongo-vol"
       "js-vol"
+      "*.tags"
     ]
     telemetryConsent: "limited"
   editor:
