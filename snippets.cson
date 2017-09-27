@@ -865,10 +865,23 @@
     },
     """
 
-  'IconCls':
+  'IconCls (ExtJS)':
     'prefix': 'iconcls_grid'
     'body': """
     {header: '', dataIndex: 'icons', width: ${1:110}, renderer: core.rendererIconGrid, menuDisabled: true},
+    """
+
+  'Constructor (ExtJS)':
+    'prefix': 'constructor_extjs'
+    'body': """
+    constructor: function(cfg) {
+        cfg = (cfg ? cfg : {$1});
+
+        Ext.apply(cfg, {$2});
+        Ext.applyIf(cfg, {$3});
+
+        ${4:namespace.of.object.until}.superclass.constructor.call(this, cfg);
+    }$5
     """
 
 '.source.python':
