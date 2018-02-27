@@ -740,7 +740,11 @@
           {name: 'pk', type: 'int'},
           {name: 'description', type: 'string'},
         ]
-      })
+      }),
+      baseParams: {
+          'param_1': 'value_1',
+          'param_2': 'value_2'
+      }
     })$5
     """
 
