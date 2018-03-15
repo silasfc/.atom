@@ -754,13 +754,15 @@
     Ext.Ajax.request({
       scope: this,
       url: core.callAction('${1:Controller}', '${2:file.json}'),
-      callback: function() {${3:console.log();}},
-      success: function(${4:response}, ${5:opts}) {
-        var ${6:obj} = Ext.decode(${4:response}.responseText);
-        console.dir(${6:obj});
+      success: function(${3:response}, ${4:options}) {
+        var ${5:obj} = Ext.decode(${3:response}.responseText);
+        console.dir(${5:obj});
       },
-      failure: function(${4:response}, ${5:opts}) {
-        console.log('Falha no servidor código status ' + ${4:response}.status);
+      failure: function(${3:response}, ${4:options}) {
+        console.log('Falha no servidor código status ' + ${3:response}.status);
+      },
+      callback: function(${4:options}, ${6:success}, ${3:response}) {
+          console.log('Concluído com ' + (${6:success} ? 'sucesso' : 'falha'));
       },
       params: {
         ${7:param_1}: '${8:value_1}',
@@ -886,6 +888,19 @@
 
         ${4:namespace.of.object.until}.superclass.constructor.call(this, cfg);
     }$5
+    """
+
+  'Form BooleanField (xtype)':
+    'prefix': 'form_bool_field'
+    'body': """
+    {
+        xtype: 'checkbox',
+        fieldLabel: '&nbsp;',
+        labelSeparator: '&nbsp;',
+        boxLabel: 'Bla ble bli blo blu?',
+        allowBlank: true,
+        name: 'field_name'
+    },
     """
 
 '.source.python':
