@@ -26,10 +26,10 @@
   'Define Object (Ext)':
     'prefix': 'define'
     'body': """
-      Ext._define('${1:namespace.object.path.Window}', {
+    Ext._define('${1:namespace.object.path.Window}', {
         extend: '${2:ext.type.object}',
-      });
-      $3
+    });
+    $3
     """
 
   'Create Object (Ext)':
@@ -40,56 +40,56 @@
   'Create Ext-Window Restful':
     'prefix': 'window_restful'
     'body': """
-      Ext._define('${1:namespace.object.path}.Window', {
+    Ext._define('${1:namespace.object.path}.Window', {
         extend: 'core.RestfulWindow',
         rest: '${1:namespace.object.path}.Restful',
 
-          formpanel$2
-      });
-      $3
+        formpanel$2
+    });
+    $3
     """
 
   'Create FormPanel (Ext)':
     'prefix': 'formpanel'
     'body': """
-      ${1:getFormPanel}: function($2) {
-        if(!this._${3:formPanel}) {
-          this._${3:formPanel} = Ext._create('Ext.form.FormPanel', {
-          border: ${4:false},
-          frame: ${5:true},
-          items: [
+    ${1:getFormPanel}: function($2) {
+    if(!this._${3:formPanel}) {
+        this._${3:formPanel} = Ext._create('Ext.form.FormPanel', {
+            border: ${4:false},
+            frame: ${5:true},
+            items: [
             {$6},
-          ]
-          });
-        }
+            ]
+        });
+    }
 
         return this._${3:formPanel};
-      }
-      $7
+    }
+    $7
     """
 
   'Create Restful (Ext)':
     'prefix': 'restful'
     'body': """
-      Ext._define('${1:namespace.object.path}', {
+    Ext._define('${1:namespace.object.path}', {
         extend: 'core.Restful',
 
         resource: '${2:RestfulControllerName}',
 
         getFields: function(cfg) {
-          if(!this._${3:fields}) {
-            this._${3:fields} = ${1:namespace.object.path}.superclass.getFields.call(this, cfg).concat([
-              {type: "string", name: "${4:field1}"},
-              {type: "date", name: "${5:field2}", dateFormat: "d/m/Y H:i"},
-              {type: "int", name: "${6:field3}", useNull: false},
-              {type: "bool", name: "${7:field4}", useNull: false},
-            ]);
-          }
+            if(!this._${3:fields}) {
+                this._${3:fields} = ${1:namespace.object.path}.superclass.getFields.call(this, cfg).concat([
+                    {type: "string", name: "${4:field1}"},
+                    {type: "date", name: "${5:field2}", dateFormat: "d/m/Y H:i"},
+                    {type: "int", name: "${6:field3}", useNull: false},
+                    {type: "bool", name: "${7:field4}", useNull: false},
+                ]);
+            }
 
-          return this._${3:fields};
+            return this._${3:fields};
         }
-      });
-      $8
+    });
+    $8
     """
 
   'Generate Report (New)':
@@ -129,7 +129,7 @@
         },
 
         constructor: function(cfg) {
-          cfg = cfg ? cfg : {};
+          cfg = cfg || {};
 
           Ext.applyIf(
             cfg,
@@ -210,15 +210,15 @@
     'prefix': 'fn'
     'body': """
     get${1:NomeDaCache}: function(${2:args}) {
-      if (!this._${3:nomeDaCache})
-        this._${3:nomeDaCache} = Ext._create('${4:CustomField}', {
-          name: '${5:Nome do campo}',
-          fieldLabel: '${6:Nome do rótulo}',
-          width: ${7:200},
-          $8
-        });
+        if (!this._${3:nomeDaCache})
+            this._${3:nomeDaCache} = Ext._create('${4:CustomField}', {
+                name: '${5:Nome do campo}',
+                fieldLabel: '${6:Nome do rótulo}',
+                width: ${7:200},
+                $8
+          });
 
-      return this._${3:nomeDaCache};
+        return this._${3:nomeDaCache};
     }
     $9
     """
@@ -369,7 +369,7 @@
         },
 
         constructor: function(cfg) {
-            cfg = core.nullValue(cfg, {});
+            cfg = cfg || {};
 
             Ext.applyIf(
                 cfg,
@@ -636,16 +636,16 @@
     """
 
   'Custom Field (Ext)':
-    'prefix': 'custom_field'
-    'body': """
-    get${1:NomeDoCampo}Field: function(${2:cfg}) {
-      if (!this._${3:nomeDoCampo})
-        this._${3:nomeDoCampo} = Ext._create('Ext.custom.Field', {
-          $4
-        });
+      'prefix': 'custom_field'
+      'body': """
+      get${1:NomeDoCampo}Field: function(${2:cfg}) {
+          if (!this._${3:nomeDoCampo})
+              this._${3:nomeDoCampo} = Ext._create('Ext.custom.Field', {
+                  $4
+              });
 
-      return this._${3:nomeDoCampo};
-    },
+          return this._${3:nomeDoCampo};
+      },
     $5
     """
 
@@ -752,24 +752,37 @@
     'prefix': 'ajax_request'
     'body': """
     Ext.Ajax.request({
-      scope: this,
-      url: core.callAction('${1:Controller}', '${2:file.json}'),
-      success: function(${3:response}, ${4:options}) {
-        var ${5:obj} = Ext.decode(${3:response}.responseText);
-        console.dir(${5:obj});
-      },
-      failure: function(${3:response}, ${4:options}) {
-        console.log('Falha no servidor código status ' + ${3:response}.status);
-      },
-      callback: function(${4:options}, ${6:success}, ${3:response}) {
-          console.log('Concluído com ' + (${6:success} ? 'sucesso' : 'falha'));
-      },
-      params: {
-        ${7:param_1}: '${8:value_1}',
-        ${9:param_2}: '${10:value_2}'
-      },
-      // method: "$11"
-    });$12
+        url: core.callAction('Controller', 'action_or_jsonfile'),
+        scope: this,
+        params: {
+            param_1: 'value_1',
+            param_2: 'value_2'
+        },
+        success: function(response, options) {
+            var obj = Ext.decode(response.responseText);
+
+            if (obj.success)
+                this.getStore().reload();
+
+            Ext.Msg.show({
+                title: this.title,
+                icon: Ext.Msg.INFO,
+                buttons: Ext.Msg.OK,
+                msg: obj.message
+            });
+        },
+        failure: function(response, options) {
+            Ext.Msg.show({
+                title: this.title,
+                icon: Ext.Msg.ERROR,
+                buttons: Ext.Msg.OK,
+                msg: response.status
+            });
+        },
+        callback: function(options, success, response) {
+            console.log('Concluído com ' + (success ? 'sucesso' : 'falha'));
+        },
+    });
     """
 
   'Error Msg Show (Ext)':
@@ -864,10 +877,23 @@
     'body': """
     {
         xtype: 'rest-autocompletefield',
-        fieldLabel: "Label",
-        allowBlank: false,
-        rest: "namespace.to.Restful",
-        name: "field_name"
+        fieldLabel: 'Label',
+        allowBlank: true,
+        rest: 'namespace.to.Restful',
+        name: 'field_name',
+        // displayField: 'unicode',
+        // valueField: 'pk',
+        // emptyText: 'Label',
+        // gridConfig: {
+        //    columnAction: false,
+        //    allowCreate: false,
+        //    allowUpdate: false,
+        //    allowRemove: false,
+        //    configOrderToolBar: ['search', '->'],
+        // }
+        // preFilter: [
+        //     {property: 'ativo__in', value: [true, false], stage: 10}
+        // ]
     },
     """
 
@@ -881,7 +907,7 @@
     'prefix': 'constructor_extjs'
     'body': """
     constructor: function(cfg) {
-        cfg = (cfg ? cfg : {$1});
+        cfg = cfg || {$1};
 
         Ext.apply(cfg, {$2});
         Ext.applyIf(cfg, {$3});
