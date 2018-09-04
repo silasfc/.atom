@@ -1,15 +1,14 @@
 "*":
-  "atom-beautify":
-    general:
-      _analyticsUserId: "ce4963c0-bcad-44f2-a016-1597ecc14845"
   "autocomplete-python":
-    useSnippets: "all"
+    extraPaths: "/home/data/containers/mp/app-vol/env/lib/python2.7; /home/data/containers/mp/app-vol/env/lib/python2.7/site-packages; /home/data/containers/mp/app-vol/root"
+    pythonPaths: "/home/data/containers/mp/app-vol/env/bin/python"
+    useKite: false
+    useSnippets: "required"
   core:
     disabledPackages: [
-      "sort-lines"
+      "spell-check"
       "wrap-guide"
-      "linter-htmlhint"
-      "symbol-gen"
+      "sort-lines"
     ]
     ignoredNames: [
       ".git"
@@ -29,18 +28,16 @@
     ]
     telemetryConsent: "limited"
   editor:
-    fontFamily: "Ubuntu Mono"
     fontSize: 18
-    invisibles: {}
     lineHeight: 1.2
     showIndentGuide: true
+    tabLength: 4
   "exception-reporting":
-    userId: "406e0d5e-7da1-48a6-bcfb-3e6b9a035ac8"
+    userId: "fc3a953e-ea7c-4441-b566-14939c978173"
+  "highlight-selected":
+    onlyHighlightWholeWords: false
   "linter-flake8":
     maxLineLength: 250
-  "linter-ui-default":
-    panelHeight: 196
-    showPanel: true
   "tree-view":
     hideIgnoredNames: true
   welcome:
