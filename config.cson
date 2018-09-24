@@ -1,4 +1,8 @@
 "*":
+  "atom-package-deps":
+    ignored: [
+      "highlight-selected"
+    ]
   "autocomplete-python":
     extraPaths: "/home/data/containers/mp/app-vol/env/lib/python2.7; /home/data/containers/mp/app-vol/env/lib/python2.7/site-packages; /home/data/containers/mp/app-vol/root"
     pythonPaths: "/home/data/containers/mp/app-vol/env/bin/python"
@@ -8,7 +12,6 @@
     disabledPackages: [
       "spell-check"
       "wrap-guide"
-      "sort-lines"
     ]
     ignoredNames: [
       ".git"
@@ -36,7 +39,11 @@
     userId: "fc3a953e-ea7c-4441-b566-14939c978173"
   "highlight-selected":
     onlyHighlightWholeWords: false
+    showResultsOnScrollBar: true
   "linter-flake8":
+    ignoreErrorCodes: [
+      "F821"
+    ]
     maxLineLength: 250
   "tree-view":
     hideIgnoredNames: true
