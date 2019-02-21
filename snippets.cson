@@ -1,30 +1,30 @@
 # http://flight-manual.atom.io/using-atom/sections/snippets/
 
 '.source.coffee':
-  'Snippeter':
-    prefix: 'snippeter'
-    body: """
-    '.source.${1:scope}':
-      '${2:Description}':
-        prefix: '${3:prefixo}'
-        \'body\'\: \"""
-    $4
-        \"""
-    """
+    'Snippeter':
+        prefix: 'snippeter'
+        body: """
+        '.source.${1:scope}':
+            '${2:Description}':
+            prefix: '${3:prefixo}'
+            \'body\'\: \"""
+                $4
+            \"""
+        """
 
-  'Snippeter No Selector':
-    prefix: 'snippeterns'
-    body: """
-    '${1:Description}':
-      prefix: '${2:prefixo}'
-      \'body\'\: \"""
-    $3
-      \"""
-    """
+    'Snippeter No Selector':
+        prefix: 'snippeterns'
+        body: """
+        '${1:Description}':
+            prefix: '${2:prefixo}'
+            \'body\'\: \"""
+                $3
+            \"""
+        """
 
 '.source.js':
     'Define Object (Ext)':
-        prefix: 'define'
+        prefix: 'extjs_define'
         body: """
         Ext._define('${1:namespace.object.path.Window}', {
             extend: '${2:ext.type.object}',
@@ -33,12 +33,12 @@
         """
 
     'Create Object (Ext)':
-        prefix: 'create_object'
+        prefix: 'extjs_create_object'
         body: 'Ext._create(\'${1:namespace.object.path}\', {}).show();
         $0'
 
     'Create Ext-Window Restful':
-        prefix: 'window_restful'
+        prefix: 'extjs_window_restful'
         body: """
         Ext._define('${1:namespace.object.path}.Window', {
             extend: 'core.RestfulWindow',
@@ -50,7 +50,7 @@
         """
 
     'Create FormPanel (Ext)':
-        prefix: 'formpanel'
+        prefix: 'extjs_formpanel'
         body: """
         ${1:getFormPanel}: function($2) {
         if(!this._${3:formPanel}) {
@@ -69,7 +69,7 @@
         """
 
     'Create Restful (Ext)':
-        prefix: 'restful'
+        prefix: 'extjs_restful'
         body: """
         Ext._define('${1:namespace.object.path}', {
             extend: 'core.Restful',
@@ -92,7 +92,7 @@
         """
 
     'Generate Report (New)':
-        prefix: 'report_new'
+        prefix: 'extjs_report_new'
         body: """
         engine.mq.Report.request({
             report: '${1:/to/mpe/path/to/Report}',
@@ -110,7 +110,7 @@
         """
 
     'Create Manage (Ext)':
-        prefix: 'manager'
+        prefix: 'extjs_manager'
         body: """
         Ext._define('${1:namespace.object.path}.Manage', {
             extend: 'toolkit.widget.TabPanel',
@@ -146,7 +146,7 @@
         """
 
     'Confirm Button (Ext)':
-        prefix: 'confirm_button'
+        prefix: 'extjs_confirm_button'
         body: """
         ${1:cache}: function() {
             Ext.Msg.show({
@@ -179,7 +179,7 @@
         """
 
     'Create Item (Ext)':
-        prefix: 'create_item'
+        prefix: 'extjs_create_item'
         body: """
         createItem: function(classDef) {
             Ext._create(classDef, {
@@ -200,7 +200,7 @@
         """
 
     'Fn (Ext)':
-        prefix: 'fn'
+        prefix: 'extjs_fn'
         body: """
         get${1:NomeDaCache}: function(${2:args}) {
             if (!this._${3:nomeDaCache})
@@ -217,7 +217,7 @@
         """
 
     'Action Button (Ext)':
-        prefix: 'action_button'
+        prefix: 'extjs_action_button'
         body: """
         get${1:NomeAcao}Button: function(cfg) {
             if(!this._${2:nome_da_acao}Button)
@@ -233,7 +233,7 @@
         """
 
     'Get Buttons (Ext)':
-        prefix: 'get_buttons'
+        prefix: 'extjs_get_buttons'
         body: """
         getButtons: function(cfg) {
             if(!this._buttons)
@@ -248,7 +248,7 @@
         """
 
     'Filter-Menu (Ext)':
-        prefix: 'filter_menu'
+        prefix: 'extjs_filter_menu'
         body: """
         ${1:custom}Filter: function() {
             if (!this._${1:custom})
@@ -300,7 +300,7 @@
         """
 
     'Clean Filter':
-        prefix: 'clean_filter'
+        prefix: 'extjs_clean_filter'
         body: """
         cleanFilter: function() {
             // Undo Filter, Exclude and finally reload (autoload true)
@@ -312,7 +312,7 @@
         """
 
     'Create Grid (Ext)':
-        prefix: 'create_grid'
+        prefix: 'extjs_create_grid'
         body: """
         get${1:NomeDo}Grid: function(${2:cfg}) {
             if (!this._${3:grid})
@@ -337,7 +337,7 @@
         """
 
     'Grid Restful':
-        prefix: 'grid_restful'
+        prefix: 'extjs_grid_restful'
         body: """
         Ext._define('${1:namespace.path.of}.Grid', {
             extend: 'core.RestfulGrid',
@@ -377,7 +377,7 @@
         """
 
     'Action Menu (Ext)':
-        prefix: 'action_menu'
+        prefix: 'extjs_action_menu'
         body: """
         get${1:Nome}Action: function(cfg) {
             if(!this._${2:nome}Action)
@@ -393,7 +393,7 @@
         """
 
     'Selection Model (Ext)':
-        prefix: 'selection_model'
+        prefix: 'extjs_selection_model'
         body: """
         this._${1:nameOfObect}Grid.getSelectionModel().on({
             scope: this,
@@ -410,7 +410,7 @@
         """
 
     'Tool Bar (Ext)':
-        prefix: 'tool_bar'
+        prefix: 'extjs_tool_bar'
         body: """
         ${1:applySearch}: function() {
             var textSearch = this.getToolbar().getComponent('${2:searchBox}');
@@ -451,7 +451,7 @@
         """
 
     'M2M Field (Ext)':
-        prefix: 'm2m_field'
+        prefix: 'extjs_m2m_field'
         body: """
         constructor: function(cfg) {
             cfg = cfg || {};
@@ -496,7 +496,7 @@
         """
 
     'Observer (Ext)':
-        prefix: 'observer'
+        prefix: 'extjs_observer'
         body: """
         constructor: function(cfg) {
             cfg = cfg || {};
@@ -553,21 +553,21 @@
         """
 
     'Set Filter Property (Ext)':
-        prefix: 'set_filter_property'
+        prefix: 'extjs_set_filter_property'
         body: """
         this.get${1:NomeDo}Grid().setFilterProperty('${2:campo_parametro}', ${3:value_of_pk}, ${4:stage(numero)});
         $0
         """
 
     'Set Param (Ext)':
-        prefix: 'set_param'
+        prefix: 'extjs_set_param'
         body: """
         this.get${1:NomeDo}Grid().setParam('${2:retirement_prevision}', ${3:value_of_pk});
         $0
         """
 
     'Singleton (Ext)':
-        prefix: 'singleton'
+        prefix: 'extjs_singleton'
         body: """
         singleton: {
             classDB: [],
@@ -624,7 +624,7 @@
         """
 
     'Custom Field (Ext)':
-        prefix: 'custom_field'
+        prefix: 'extjs_custom_field'
         body: """
         get${1:NomeDoCampo}Field: function(${2:cfg}) {
             if (!this._${3:nomeDoCampo})
@@ -638,7 +638,7 @@
         """
 
     'Text Field (Ext)':
-        prefix: 'text_field'
+        prefix: 'extjs_text_field'
         body: """
         get${1:NomeDoCampo}Field: function(${2:cfg}) {
             if (!this._${3:nomeDoCampo})
@@ -657,7 +657,7 @@
         """
 
     'Update Item (Ext)':
-        prefix: 'update_item'
+        prefix: 'extjs_update_item'
         body: """
         updateItem: function(record) {
             if(record instanceof Ext.Button)
@@ -694,7 +694,7 @@
         """
 
     'Data HttpProxy (Ext)':
-        prefix: 'data_http_proxy'
+        prefix: 'extjs_data_http_proxy'
         body: """
         proxy: Ext._create('Ext.data.HttpProxy', {
             url: core.callAction('${1:NomeDoController}', '${2:nome_do_metodo}')
@@ -702,7 +702,7 @@
         """
 
     'Data JsonReader (Ext)':
-        prefix: 'data_json_reader'
+        prefix: 'extjs_data_json_reader'
         body: """
         reader: Ext._create('Ext.data.JsonReader', {
             totalProperty: 'count',
@@ -715,7 +715,7 @@
         """
 
     'Data Store (Ext)':
-        prefix: 'data_store'
+        prefix: 'extjs_data_store'
         body: """
         store: Ext._create('Ext.data.Store', {
             proxy: Ext._create('Ext.data.HttpProxy', {
@@ -737,7 +737,7 @@
         """
 
     'Ajax Request (Ext)':
-        prefix: 'ajax_request'
+        prefix: 'extjs_ajax_request'
         body: """
         Ext.Ajax.request({
             url: core.callAction('Controller', 'action_or_jsonfile'),
@@ -774,7 +774,7 @@
         """
 
     'Error Msg Show (Ext)':
-        prefix: 'error_msg_show'
+        prefix: 'extjs_error_msg_show'
         body: """
         Ext.Msg.show({
             title: ${1:this.title},
@@ -785,7 +785,7 @@
         """
 
     'Question Msg Show (Ext)':
-        prefix: 'question_msg_show'
+        prefix: 'extjs_question_msg_show'
         body: """
         Ext.Msg.show({
             title: ${1:this.title},
@@ -800,7 +800,7 @@
         """
 
     'Form TextField (xtype)':
-        prefix: 'form_text_field'
+        prefix: 'extjs_form_text_field'
         body: """
         {
             xtype: 'textfield',
@@ -813,7 +813,7 @@
         """
 
     'Form NumberField (xtype)':
-        prefix: 'form_number_field'
+        prefix: 'extjs_form_number_field'
         body: """
         {
             xtype: 'numberfield',
@@ -827,7 +827,7 @@
         """
 
     'Form ChoiceField (xtype)':
-        prefix: 'form_choice_field'
+        prefix: 'extjs_form_choice_field'
         body: """
         {
             xtype: 'choicefield',
@@ -838,7 +838,7 @@
         """
 
     'Form Panel (ExtJS)':
-        prefix: 'form_panel'
+        prefix: 'extjs_form_panel'
         body: """
         get${1:Panel}: function(${2:cfg}) {
             if(!this._${3:panel})
@@ -861,7 +861,7 @@
         """
 
     'Autocomplet Rest (ExtJS)':
-        prefix: 'autocomplet_rest'
+        prefix: 'extjs_autocomplet_rest'
         body: """
         {
             xtype: 'rest-autocompletefield',
@@ -886,13 +886,13 @@
         """
 
     'IconCls (ExtJS)':
-        prefix: 'iconcls_grid'
+        prefix: 'extjs_iconcls_grid'
         body: """
         {header: '', dataIndex: 'icons', width: ${1:110}, renderer: core.rendererIconGrid, menuDisabled: true},
         """
 
     'Constructor (ExtJS)':
-        prefix: 'constructor_extjs'
+        prefix: 'extjs_constructor_extjs'
         body: """
         constructor: function(cfg) {
             cfg = cfg || {$1};
@@ -905,7 +905,7 @@
         """
 
     'Form BooleanField (xtype)':
-        prefix: 'form_bool_field'
+        prefix: 'extjs_form_bool_field'
         body: """
         {
             xtype: 'checkbox',
@@ -919,127 +919,127 @@
 
 '.source.python':
   'BigIntegerField (Models)':
-    prefix: 'big_integer_field'
+    prefix: 'py_big_integer_field'
     body: """
     ${1:nome_do_campo} = models.BigIntegerField(verbose_name='${2:Descrição}', null=${3:True}$4)$5
     """
 
   'BooleanField (Models)':
-    prefix: 'boolean_field'
+    prefix: 'py_boolean_field'
     body: """
     ${1:nome_do_campo} = models.BooleanField(verbose_name='${2:Descrição}', default=${3:True}$4)$5
     """
 
   'CharField (Models)':
-    prefix: 'char_field'
+    prefix: 'py_char_field'
     body: """
     ${1:nome_do_campo} = models.CharField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}$5)$6
     """
 
   'CustomField (Models)':
-    prefix: 'custom_field'
+    prefix: 'py_custom_field'
     body: """
     ${1:nome_do_campo} = models.${2:TipoDoCampo}(verbose_name = '${3:Descrição}'${4})$5
     """
 
   'DateField (Models)':
-    prefix: 'date_field'
+    prefix: 'py_date_field'
     body: """
     ${1:nome_do_campo} = models.DateField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
     """
 
   'DateTimeField (Models)':
-    prefix: 'date_time_field'
+    prefix: 'py_date_time_field'
     body: """
     ${1:nome_do_campo} = models.DateTimeField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
     """
 
   'EmailField (Models)':
-    prefix: 'email_field'
+    prefix: 'py_email_field'
     body: """
     ${1:nome_do_campo} = models.EmailField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
     """
 
   'FloatField (Models)':
-    prefix: 'float_field'
+    prefix: 'py_float_field'
     body: """
     ${1:nome_do_campo} = models.FloatField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
     """
 
   'ForeignKey (Models)':
-    prefix: 'foreign_key'
+    prefix: 'py_foreign_key'
     body: """
     ${1:nome_do_campo} = models.ForeignKey(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', null=${5:True}${6})$7
     """
 
   'IntegerField (Models)':
-    prefix: 'integer_field'
+    prefix: 'py_integer_field'
     body: """
     ${1:nome_do_campo} = models.IntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
     """
 
   'M2MField (Models)':
-    prefix: 'm2m_field'
+    prefix: 'py_m2m_field'
     body: """
     ${1:nome_do_campo} = models.ManyToManyField(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', through=${5:ModeloDeLigacao}${6})$7
     """
 
   'NullBolleanField (Models)':
-    prefix: 'null_boolean_field'
+    prefix: 'py_null_boolean_field'
     body: """
     ${1:nome_do_campo} = models.NullBooleanField(verbose_name='${2:Descrição}', default=${3:True}${4})$5
     """
 
   'O2OField (Models)':
-    prefix: 'o2o_field'
+    prefix: 'py_o2o_field'
     body: """
     ${1:nome_do_campo} = models.OneToOneField(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', null=${5:True}${6})$7
     """
 
   'PositiveIntegerField (Models)':
-    prefix: 'positive_integer_field'
+    prefix: 'py_positive_integer_field'
     body: """
     ${1:nome_do_campo} = models.PositiveIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
     """
 
   'PositiveSmallIntegerField (Models)':
-    prefix: 'positive_small_integer_field'
+    prefix: 'py_positive_small_integer_field'
     body: """
     ${1:nome_do_campo} = models.PositiveSmallIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
     """
 
   'SlugField (Models)':
-    prefix: 'slug_field'
+    prefix: 'py_slug_field'
     body: """
     ${1:nome_do_campo} = models.SlugField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
     """
 
   'SmallIntegerField (Models)':
-    prefix: 'small_integer_field'
+    prefix: 'py_small_integer_field'
     body: """
     ${1:nome_do_campo} = models.SmallIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
     """
 
   'TextField (Models)':
-    prefix: 'text_field'
+    prefix: 'py_text_field'
     body: """
     ${1:nome_do_campo} = models.TextField(verbose_name='${2:Descrição}', blank=${3:True}${4})$5
     """
 
   'TimeField (Models)':
-    prefix: 'time_field'
+    prefix: 'py_time_field'
     body: """
     ${1:nome_do_campo} = models.TimeField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
     """
 
   'URLField (Models)':
-    prefix: 'url_field'
+    prefix: 'py_url_field'
     body: """
     ${1:nome_do_campo} = models.URLField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
     """
 
   'Call Action (Controller)':
-    prefix: 'call_action_controller'
+    prefix: 'py_call_action_controller'
     body: """
     def ${1:name_action}(self, *args):
         obj = {
@@ -1062,7 +1062,7 @@
     """
 
   'Exception (Models)':
-    prefix: 'exception'
+    prefix: 'py_exception'
     body: """
     except ${1:Exception} as ${2:e}:
         log.debug(${2:e})
@@ -1070,7 +1070,7 @@
     """
 
   'Get Query (Controller)':
-    prefix: 'get_query'
+    prefix: 'py_get_query'
     body: """
     from contrib.middleware import get_current_user
 
@@ -1085,7 +1085,7 @@
     """
 
   'Model To Dict (Controller)':
-    prefix: 'model_to_dict'
+    prefix: 'py_model_to_dict'
     body: """
     def model_to_dict(self, instance):
         _dict_ = super(${1:PrefixoModelo}, self).model_to_dict(instance)
@@ -1099,7 +1099,7 @@
     """
 
   'JSON Write (Controller)':
-    prefix: 'json_write'
+    prefix: 'py_json_write'
     body: """
     def json(self, args=[]):
         self.response['content-type'] = 'text/javascript'
@@ -1108,7 +1108,7 @@
     """
 
   'Register JS (__init__)':
-    prefix: 'register_js'
+    prefix: 'py_register_js'
     body: """
     # -*- coding: utf-8 -*-
     from default.views import Application
@@ -1121,7 +1121,7 @@
     """
 
   'Empty Migration':
-    prefix: 'empty_migration'
+    prefix: 'py_empty_migration'
     body: """
     # -*- coding: utf-8 -*-
     from __future__ import unicode_literals
@@ -1146,7 +1146,7 @@
     """
 
   'Create Model (Model)':
-    prefix: 'create_model'
+    prefix: 'py_create_model'
     body: """
     class ${1:Classe}(${2:models.Model}):
         \"""${3:Docstring da classe}.
@@ -1166,7 +1166,7 @@
     """
 
   'Register CSS (__init__)':
-    prefix: 'register_css'
+    prefix: 'py_register_css'
     body: """
     # -*- coding: utf-8 -*-
     from default.views import Application
@@ -1176,7 +1176,7 @@
     """
 
   'Raise (Exception)':
-    prefix: 'raise_exception'
+    prefix: 'py_raise_exception'
     body: """
     raise_msg = u'${1:Mensagem a ser exibida para a exceção}'
     raise ${2:Exception}(raise_msg)
@@ -1184,7 +1184,7 @@
     """
 
   'Signal (Signals)':
-    prefix: 'create_signal'
+    prefix: 'py_create_signal'
     body: """
     # -*- coding: utf-8 -*-
     from contrib.utils import getLogger
@@ -1205,7 +1205,7 @@
     """
 
   'RestfulDry (Controller)':
-    prefix: 'restfuldry'
+    prefix: 'py_restfuldry'
     body: """
     # -*- coding: utf-8 -*-
     from contrib.newrest import RestfulDRY
@@ -1263,7 +1263,7 @@
     """
 
   'Delete (Models)':
-    prefix: 'delete'
+    prefix: 'py_delete'
     body: """
     def delete(self, *args, **kwargs):
         super(${1:NomeDaClasse}, self).delete(*args, **kwargs)
@@ -1271,7 +1271,7 @@
     """
 
   'Get Icons (Models)':
-    prefix: 'get_icons'
+    prefix: 'py_get_icons'
     body: """
     @property
     def get_icons(self):
@@ -1289,7 +1289,7 @@
     """
 
   'Make Command (Manage)':
-    prefix: 'make_command'
+    prefix: 'py_make_command'
     body: """
     # -*- coding: utf-8 -*-
     from django.core.management.base import BaseCommand
@@ -1348,7 +1348,7 @@
     """
 
   'CustomAppConfig (Apps.Py)':
-    prefix: 'custom_apps_py'
+    prefix: 'py_custom_apps_py'
     body: """
     # -*- coding:utf-8 -*-
 
@@ -1410,3 +1410,12 @@
 
 
     """
+
+'.text.html.basic':
+    'Django Template - for':
+        prefix: 'dj_for'
+        body: """
+        {% for ${1:i} in ${2:obj} %}
+            {{ ${1:i}.${3:field} }}
+        {% endfor %}$0
+        """

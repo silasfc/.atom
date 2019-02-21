@@ -1,4 +1,7 @@
 "*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "a4d503a0-8b16-47a3-b137-3923bf81227b"
   "atom-package-deps":
     ignored: [
       "highlight-selected"
@@ -8,6 +11,8 @@
     pythonPaths: "/home/data/containers/mp/app-vol/env/bin/python"
     useKite: false
     useSnippets: "required"
+  "bracket-matcher":
+    highlightMatchingLineNumber: true
   core:
     disabledPackages: [
       "spell-check"
@@ -45,7 +50,12 @@
       "F821"
     ]
     maxLineLength: 250
+  "linter-ui-default":
+    panelHeight: 176
+  "one-dark-ui":
+    fontSize: 13
   "tree-view":
     hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false

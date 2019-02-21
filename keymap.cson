@@ -32,5 +32,5 @@
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
 
 'atom-text-editor':
-  'ctrl-backspace': 'editor:delete-to-beginning-of-word'
-  'ctrl-delete': 'editor:delete-to-end-of-word'
+  'ctrl-backspace': 'editor:delete-to-previous-word-boundary'
+  'ctrl-delete': 'editor:delete-to-next-word-boundary'
