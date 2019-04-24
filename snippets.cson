@@ -749,14 +749,13 @@
             success: function(response, options) {
                 var obj = Ext.decode(response.responseText);
 
-                if (obj.success)
-                    // this.getStore().reload();
-                    Ext.Msg.show({
-                        title: this.title,
-                        icon: Ext.Msg.INFO,
-                        buttons: Ext.Msg.OK,
-                        msg: obj.message
-                    });
+                // this.getStore().reload();
+                Ext.Msg.show({
+                    title: this.title,
+                    icon: obj.success ? Ext.Msg.INFO : Ext.Msg.ERROR,
+                    buttons: Ext.Msg.OK,
+                    msg: obj.message
+                });
             },
             failure: function(response, options) {
                 Ext.Msg.show({
@@ -958,14 +957,14 @@
     'Restful - Do Ajax Request':
         prefix: 'extjs_restful_do_ajax_request'
         body: """
-        doActionName: function(pk, cbSuccess, cbFailure, cbCallback) {
+        ${1:doActionName}: function(pk, cbSuccess, cbFailure, cbCallback) {
             this.doRequest(
                 this.getRoute(
-                    '${1:do_action_name}',
+                    '${2:do_action_name}',
                     false,
-                    'POST',
+                    '${3:POST}',
                     {
-                        params: {pk: pk},
+                        params: {${4:pk: pk}},
                         scope: this,
                         success: function(xhr) {
                             var rst = Ext.decode(xhr.responseText);
