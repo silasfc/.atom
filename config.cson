@@ -1,7 +1,4 @@
 "*":
-  "atom-beautify":
-    general:
-      _analyticsUserId: "a4d503a0-8b16-47a3-b137-3923bf81227b"
   "atom-package-deps":
     ignored: [
       "highlight-selected"
@@ -10,13 +7,13 @@
     extraPaths: "/home/data/containers/mp/app-vol/env/lib/python2.7; /home/data/containers/mp/app-vol/env/lib/python2.7/site-packages; /home/data/containers/mp/app-vol/root"
     pythonPaths: "/home/data/containers/mp/app-vol/env/bin/python"
     useKite: false
-    useSnippets: "required"
   "bracket-matcher":
     highlightMatchingLineNumber: true
   core:
     disabledPackages: [
       "spell-check"
       "wrap-guide"
+      "todo-show"
     ]
     ignoredNames: [
       ".git"
@@ -26,23 +23,43 @@
       "._*"
       "Thumbs.db"
       "desktop.ini"
-      "*.pyc"
-      "env"
-      "var"
       "db-vol"
-      "mongo-vol"
       "js-vol"
-      "*.tags"
+      "log-vol"
+      "mongo-vol"
+      "var"
+      "*.py[c|o]"
     ]
     telemetryConsent: "limited"
   editor:
-    fontSize: 18
-    lineHeight: 1.2
+    fontSize: 17
+    lineHeight: 1.1
+    preferredLineLength: 130
     showIndentGuide: true
     tabLength: 4
   "exception-reporting":
-    userId: "fc3a953e-ea7c-4441-b566-14939c978173"
+    userId: "3390aaf1-8139-4c33-b5b5-59a8fe0da6dc"
+  "fuzzy-finder":
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "db-vol"
+      "js-vol"
+      "log-vol"
+      "mongo-vol"
+      "var"
+      "*.py[c|o]"
+    ]
+    prefillFromSelection: true
+    scoringSystem: "fast"
+    useRipGrep: true
   "highlight-selected":
+    ignoreCase: true
     onlyHighlightWholeWords: false
     showResultsOnScrollBar: true
   "linter-flake8":
@@ -51,10 +68,48 @@
     ]
     maxLineLength: 250
   "linter-ui-default":
-    panelHeight: 176
-  "one-dark-ui":
-    fontSize: 13
+    panelHeight: 226.5
+  minimap:
+    plugins:
+      "find-and-replace": true
+      "find-and-replaceDecorationsZIndex": 0
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
+      selection: true
+      selectionDecorationsZIndex: 0
+  "one-dark-ui": {}
+  "symbol-gen": {}
+  "todo-show":
+    autoRefresh: false
+    findTheseTodos: [
+      "TODO"
+      "FIXME"
+    ]
+    ignoreThesePaths: [
+      "node_modules"
+      "vendor"
+      "bower_components"
+      "*.pdf"
+      "db-vol"
+      "js-vol"
+      "log-vol"
+      "mongo-vol"
+      "**/var/**"
+      "**/env/**"
+      "*.min.js"
+      "**/root/rh/**"
+      "**/root/esocial/**"
+      "**/root/standard/**"
+      "**/root/sispat/**"
+    ]
+    sortAscending: false
+    statusBarIndicator: true
   "tree-view":
+    autoReveal: true
     hideIgnoredNames: true
     hideVcsIgnoredFiles: true
   welcome:
