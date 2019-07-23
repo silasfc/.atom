@@ -1,4 +1,9 @@
 "*":
+  "atom-beautify":
+    python:
+      max_line_length: 250
+  "atom-material-ui":
+    tabs: {}
   "atom-package-deps":
     ignored: [
       "highlight-selected"
@@ -7,13 +12,17 @@
     extraPaths: "/home/data/containers/mp/app-vol/env/lib/python2.7; /home/data/containers/mp/app-vol/env/lib/python2.7/site-packages; /home/data/containers/mp/app-vol/root"
     pythonPaths: "/home/data/containers/mp/app-vol/env/bin/python"
     useKite: false
+    useSnippets: "required"
   "bracket-matcher":
     highlightMatchingLineNumber: true
   core:
+    autoHideMenuBar: true
     disabledPackages: [
       "spell-check"
+      "linter-eslint"
+      "linter-flake8"
+      "linter-pylint"
       "wrap-guide"
-      "todo-show"
     ]
     ignoredNames: [
       ".git"
@@ -24,13 +33,18 @@
       "Thumbs.db"
       "desktop.ini"
       "db-vol"
+      "env"
       "js-vol"
       "log-vol"
       "mongo-vol"
       "var"
       "*.py[c|o]"
+      "*.min.js"
+      ".tags"
     ]
     telemetryConsent: "limited"
+  "ctags-status":
+    outerScope: true
   editor:
     fontSize: 17
     lineHeight: 1.1
@@ -54,21 +68,39 @@
       "mongo-vol"
       "var"
       "*.py[c|o]"
+      "*.min.js"
+      ".tags"
     ]
     prefillFromSelection: true
     scoringSystem: "fast"
     useRipGrep: true
+  "git-diff": {}
   "highlight-selected":
     ignoreCase: true
     onlyHighlightWholeWords: false
     showResultsOnScrollBar: true
+  "linter-eslint":
+    advanced:
+      localNodeModules: "/home/silas/node_modules"
+    global:
+      eslintrcPath: "/home/data/containers/mp/.eslintrc.js"
+      globalNodePath: "/usr"
   "linter-flake8":
     ignoreErrorCodes: [
-      "F821"
+      "E501"
     ]
-    maxLineLength: 250
+  "linter-jshint": {}
+  "linter-pylama":
+    executablePath: "/home/silas/.local/bin/pylama"
+    ignoreErrorsAndWarnings: "E501,E0602"
+    lintOnFly: false
+    pylamaVersion: "external"
+    useIsort: true
+    usePep257: false
+  "linter-pylint":
+    disableTimeout: true
   "linter-ui-default":
-    panelHeight: 226.5
+    panelHeight: 202.5
   minimap:
     plugins:
       "find-and-replace": true
@@ -81,8 +113,15 @@
       linterDecorationsZIndex: 0
       selection: true
       selectionDecorationsZIndex: 0
-  "one-dark-ui": {}
+  "one-dark-ui":
+    fontSize: 13
   "symbol-gen": {}
+  "symbols-navigator":
+    autoRevealOnStart: true
+    clickType: "Single Click"
+    showOnStatusBar: true
+  "symbols-tree-view":
+    autoToggle: true
   "todo-show":
     autoRefresh: false
     findTheseTodos: [
@@ -105,12 +144,43 @@
       "**/root/esocial/**"
       "**/root/standard/**"
       "**/root/sispat/**"
+      "**/root/adm/**"
+      "**/root/engine/**"
+      "**/root/edocs/**"
+      "**/root/common/**"
+      "**/root/web/**"
+      "**/root/cesaf/**"
     ]
     sortAscending: false
+    sortBy: "Type"
     statusBarIndicator: true
   "tree-view":
     autoReveal: true
     hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+  "wrap-guide":
+    columns: [
+      200
+    ]
+".js.source":
+  editor:
+    preferredLineLength: 100
+  "wrap-guide":
+    columns: [
+      100
+    ]
+".plain.text":
+  editor:
+    preferredLineLength: 100
+  "wrap-guide":
+    columns: [
+      100
+    ]
+".python.source":
+  editor:
+    preferredLineLength: 100
+  "wrap-guide":
+    columns: [
+      100
+    ]

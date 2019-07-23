@@ -342,7 +342,7 @@
         Ext._define('${1:namespace.path.of}.Grid', {
             extend: 'core.RestfulGrid',
             restWindow: '${1:namespace.path.of}.Window',
-            configOrderToolBar: [${2:'add', 'edit', 'remove', '-', '->', '-'}],
+            configOrderToolBar: [${2:'add', 'edit', 'remove', '-', 'search', '->', '-'}],
 
             getColumnModel: function() {
                 if(!this._columnModel)
@@ -861,26 +861,31 @@
     'Autocomplet Rest (ExtJS)':
         prefix: 'extjs_autocomplet_rest'
         body: """
-        {
-            xtype: 'rest-autocompletefield',
-            fieldLabel: 'Label',
-            allowBlank: true,
-            rest: 'namespace.to.Restful',
-            name: 'field_name',
-            // displayField: 'unicode',
-            // valueField: 'pk',
-            // emptyText: 'Label',
-            // gridConfig: {
-            //    columnAction: false,
-            //    allowCreate: false,
-            //    allowUpdate: false,
-            //    allowRemove: false,
-            //    configOrderToolBar: ['search', '->'],
-            // }
-            // preFilter: [
-            //     {property: 'ativo__in', value: [true, false], stage: 100}
-            // ]
-        },
+        get${1:NomeDo}Field: function() {
+            if (!this._${2:nomeDo}Field) {
+                this._${2:nomeDo}Field = Ext._create('core.fields.AutocompleteField', {
+                    fieldLabel: '${3:Nome do campo}',
+                    // emptyText: 'Placeholder text',
+                    name: "${4:diligence}",
+                    displayField: 'unicode',
+                    valueField: 'pk',
+                    rest: '${5:namespace.to.Restful}',
+                    allowBlank: true,
+                    // preFilter: [{property: 'ativo__in', value: [true, false], stage: 1001}],
+                    // gridConfig: {
+                    //     columnAction: false,
+                    //     allowCreate: false,
+                    //     allowUpdate: false,
+                    //     allowRemove: false,
+                    //     configOrderToolBar: ['search', '->'],
+                    //     hideItemsToolbar: ['add', 'edit', 'remove', 'download', 'filter'],
+                    //     hideColumns: ['column1', 'column2'],
+                    // }
+                });
+            }
+
+            return this._${2:nomeDo}Field;
+        },$0
         """
 
     'IconCls (ExtJS)':
@@ -927,7 +932,6 @@
                 {
                     scope: this,
                     fn: function(obj) {
-                        console.log(obj);
                         Ext.Msg.show({
                             title: this.title,
                             icon: obj.success ? Ext.Msg.INFO : Ext.Msg.ERROR,
