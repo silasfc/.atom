@@ -43,12 +43,14 @@
       ".tags"
     ]
     telemetryConsent: "limited"
+    useTreeSitterParsers: false
   "ctags-status":
     outerScope: true
   editor:
-    fontSize: 17
+    fontSize: 16
     lineHeight: 1.1
     preferredLineLength: 130
+    scrollPastEnd: true
     showIndentGuide: true
     tabLength: 4
   "exception-reporting":
@@ -79,6 +81,8 @@
     ignoreCase: true
     onlyHighlightWholeWords: false
     showResultsOnScrollBar: true
+  kite:
+    showWelcomeNotificationOnStartup: false
   "linter-eslint":
     advanced:
       localNodeModules: "/home/silas/node_modules"
@@ -100,7 +104,8 @@
   "linter-pylint":
     disableTimeout: true
   "linter-ui-default":
-    panelHeight: 202.5
+    panelHeight: 138.5
+    showPanel: true
   minimap:
     plugins:
       "find-and-replace": true
