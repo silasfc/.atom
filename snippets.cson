@@ -991,126 +991,6 @@
         """
 
 '.source.python':
-  'BigIntegerField (Models)':
-    prefix: 'py_big_integer_field'
-    body: """
-    ${1:nome_do_campo} = models.BigIntegerField(verbose_name='${2:Descrição}', null=${3:True}$4)$5
-    """
-
-  'BooleanField (Models)':
-    prefix: 'py_boolean_field'
-    body: """
-    ${1:nome_do_campo} = models.BooleanField(verbose_name='${2:Descrição}', default=${3:True}$4)$5
-    """
-
-  'CharField (Models)':
-    prefix: 'py_char_field'
-    body: """
-    ${1:nome_do_campo} = models.CharField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}$5)$6
-    """
-
-  'CustomField (Models)':
-    prefix: 'py_custom_field'
-    body: """
-    ${1:nome_do_campo} = models.${2:TipoDoCampo}(verbose_name = '${3:Descrição}'${4})$5
-    """
-
-  'DateField (Models)':
-    prefix: 'py_date_field'
-    body: """
-    ${1:nome_do_campo} = models.DateField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
-    """
-
-  'DateTimeField (Models)':
-    prefix: 'py_date_time_field'
-    body: """
-    ${1:nome_do_campo} = models.DateTimeField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
-    """
-
-  'EmailField (Models)':
-    prefix: 'py_email_field'
-    body: """
-    ${1:nome_do_campo} = models.EmailField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
-    """
-
-  'FloatField (Models)':
-    prefix: 'py_float_field'
-    body: """
-    ${1:nome_do_campo} = models.FloatField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
-    """
-
-  'ForeignKey (Models)':
-    prefix: 'py_foreign_key'
-    body: """
-    ${1:nome_do_campo} = models.ForeignKey(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', null=${5:True}${6})$7
-    """
-
-  'IntegerField (Models)':
-    prefix: 'py_integer_field'
-    body: """
-    ${1:nome_do_campo} = models.IntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
-    """
-
-  'M2MField (Models)':
-    prefix: 'py_m2m_field'
-    body: """
-    ${1:nome_do_campo} = models.ManyToManyField(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', through=${5:ModeloDeLigacao}${6})$7
-    """
-
-  'NullBolleanField (Models)':
-    prefix: 'py_null_boolean_field'
-    body: """
-    ${1:nome_do_campo} = models.NullBooleanField(verbose_name='${2:Descrição}', default=${3:True}${4})$5
-    """
-
-  'O2OField (Models)':
-    prefix: 'py_o2o_field'
-    body: """
-    ${1:nome_do_campo} = models.OneToOneField(${2:NomeDoModelo}, verbose_name='${3:Descrição}', related_name='${4:relacionamento_campo_model}', null=${5:True}${6})$7
-    """
-
-  'PositiveIntegerField (Models)':
-    prefix: 'py_positive_integer_field'
-    body: """
-    ${1:nome_do_campo} = models.PositiveIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
-    """
-
-  'PositiveSmallIntegerField (Models)':
-    prefix: 'py_positive_small_integer_field'
-    body: """
-    ${1:nome_do_campo} = models.PositiveSmallIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
-    """
-
-  'SlugField (Models)':
-    prefix: 'py_slug_field'
-    body: """
-    ${1:nome_do_campo} = models.SlugField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
-    """
-
-  'SmallIntegerField (Models)':
-    prefix: 'py_small_integer_field'
-    body: """
-    ${1:nome_do_campo} = models.SmallIntegerField(verbose_name='${2:Descrição}', null=${3:True}${4})$5
-    """
-
-  'TextField (Models)':
-    prefix: 'py_text_field'
-    body: """
-    ${1:nome_do_campo} = models.TextField(verbose_name='${2:Descrição}', blank=${3:True}${4})$5
-    """
-
-  'TimeField (Models)':
-    prefix: 'py_time_field'
-    body: """
-    ${1:nome_do_campo} = models.TimeField(${2:auto_now=False}, ${3:auto_now_add=False}, verbose_name='${4:Descrição}', null=${5:True}${6})$7
-    """
-
-  'URLField (Models)':
-    prefix: 'py_url_field'
-    body: """
-    ${1:nome_do_campo} = models.URLField(max_length=${2:None}, verbose_name='${3:Descrição}', blank=${4:True}${5})$6
-    """
-
   'Call Action (Controller)':
     prefix: 'py_call_action_controller'
     body: """
@@ -1230,12 +1110,12 @@
         class Meta:
             verbose_name = u'${5:Nome no singular}'
 
-        def __unicode__(self):  # __str__(self)
+        def __str__(self):  # __unicode__(self)
             ${6:pass}
 
         def save(self, *args, **kwargs):
             super(${1:Classe}, self).save(*args, **kwargs)
-    $7
+    $0
     """
 
   'Register CSS (__init__)':
@@ -1245,7 +1125,7 @@
     from default.views import Application
 
     Application.register_stylesheet('/%(context)s/static/${1:app}/images/${2:modulo}/${3:arquivo}.css')
-    $4
+    $0
     """
 
   'Raise (Exception)':
@@ -1253,7 +1133,7 @@
     body: """
     raise_msg = u'${1:Mensagem a ser exibida para a exceção}'
     raise ${2:Exception}(raise_msg)
-    $3
+    $0
     """
 
   'Signal (Signals)':
@@ -1274,7 +1154,7 @@
         # log.info(u'${Texto qualquer} %s - %s' % (instance, instance.${6:item_da_instancia}))
         instance.${6:item_da_instancia}.save()
 
-    $7
+    $0
     """
 
   'RestfulDry (Controller)':
@@ -1332,7 +1212,7 @@
             query = query.filter(${15:campo_parametro}__in=user.servidor.first().work_locations)
 
             return query
-    $16
+    $0
     """
 
   'Delete (Models)':
@@ -1340,7 +1220,7 @@
     body: """
     def delete(self, *args, **kwargs):
         super(${1:NomeDaClasse}, self).delete(*args, **kwargs)
-    $2
+    $0
     """
 
   'Get Icons (Models)':
@@ -1358,7 +1238,7 @@
         ${1:nome} = icon_${1:nome}_map.get(self.${11:campo_da_instancia})
 
         return ${1:nome}
-    $12
+    $0
     """
 
   'Make Command (Manage)':
@@ -1417,7 +1297,7 @@
         def ${15:tarefa_do_parametro_y}(self):
             ${16:pass}
 
-    $17
+    $0
     """
 
   'CustomAppConfig (Apps.Py)':
@@ -1490,5 +1370,6 @@
         body: """
         {% for ${1:i} in ${2:obj} %}
             {{ ${1:i}.${3:field} }}
-        {% endfor %}$0
+        {% endfor %}
+        $0
         """
