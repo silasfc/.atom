@@ -928,7 +928,10 @@
             mask.show();
 
             this.factoryRestful().${1:doActionName}(
-                this.oId,
+                {
+                    pkset: ${3:this.oId}, /* selections.map(function(row) { return row.get('pk');}) */
+                    another_param: ${4:'another_param'},
+                },
                 {
                     scope: this,
                     fn: function(obj) {
@@ -961,14 +964,17 @@
     'Restful - Do Ajax Request':
         prefix: 'extjs_restful_do_ajax_request'
         body: """
-        ${1:doActionName}: function(pk, cbSuccess, cbFailure, cbCallback) {
+        ${1:doActionName}: function(params, cbSuccess, cbFailure, cbCallback) {
             this.doRequest(
                 this.getRoute(
                     '${2:do_action_name}',
                     false,
-                    '${3:POST}',
+                    '${3:PUT}',
                     {
-                        params: {${4:pk: pk}},
+                        params: {
+                            ${4:pkset: params.pkset},
+                            ${5:another_param: params.another_param},
+                        },
                         scope: this,
                         success: function(xhr) {
                             var rst = Ext.decode(xhr.responseText);
@@ -1363,6 +1369,15 @@
 
 
     """
+
+  'Save (Overwrite)':
+    prefix: 'py_save_overwrite'
+    'body': """
+        def save(self, ${1:*args}, ${2:**kwargs}):
+            super(${3:SuperClassName}, self).save(${1:*args}, ${2:**kwargs})
+        $0
+    """
+
 
 '.text.html.basic':
     'Django Template - for':
