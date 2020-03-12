@@ -47,7 +47,7 @@
     preferredLineLength: 130
     scrollPastEnd: true
     showIndentGuide: true
-    tabLength: 4
+    tabLength: 8
   "exception-reporting":
     userId: "3390aaf1-8139-4c33-b5b5-59a8fe0da6dc"
   "fuzzy-finder":
