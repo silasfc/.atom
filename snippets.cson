@@ -68,8 +68,8 @@
         $0
         """
 
-    'Create Restful (Ext)':
-        prefix: 'extjs_restful'
+    'Create Restful (Ext) Template':
+        prefix: 'extjs_restful_template'
         body: """
         Ext._define('${1:namespace.object.path}', {
             extend: 'core.Restful',
@@ -336,8 +336,8 @@
         $0
         """
 
-    'Grid Restful':
-        prefix: 'extjs_grid_restful'
+    'Create a Restful Grid Template':
+        prefix: 'extjs_grid_template'
         body: """
         Ext._define('${1:namespace.path.of}.Grid', {
             extend: 'core.RestfulGrid',
@@ -939,7 +939,8 @@
                             title: this.title,
                             icon: obj.success ? Ext.Msg.INFO : Ext.Msg.ERROR,
                             buttons: Ext.Msg.OK,
-                            msg: obj.message
+                            msg: obj.message,
+                            minWidth: 250
                         });
                     }
                 },
@@ -950,12 +951,16 @@
                             title: this.title,
                             icon: Ext.Msg.ERROR,
                             buttons: Ext.Msg.OK,
-                            msg: message
+                            msg: message,
+                            minWidth: 250
                         });
                     }
                 },
                 {
-                    fn: function() { mask.hide(); }
+                    scope: this,
+                    fn: function() {
+                        mask.hide();
+                    }
                 }
             );
         }$0
@@ -1007,12 +1012,13 @@
         }
 
         try:
+            self._read_special_verb()
             with transaction.atomic():
-                for ${3:s} in ${4:NomeDoModelo}.objects.filter(${5:pk}__in=self.request.POST.getlist('${5:pk}')):
+                for ${3:s} in ${4:self._model}.objects.filter(pk__in=self.request.PUT.getlist('${5:pk}')):
                     ${3:s}.${6:acao_a_executar}()
         except Exception as e:
             log.exception(e)
-            response.update(message=e.message)
+            response.update(message=str(e))
         else:
             response.update(success=True, message=u'Ação realizada com sucesso.')
 

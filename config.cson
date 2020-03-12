@@ -1,9 +1,9 @@
 "*":
   "atom-beautify":
+    general:
+      _analyticsUserId: "f511ecec-3c69-43aa-b56c-ac6e8ba6df6d"
     python:
       max_line_length: 250
-  "atom-material-ui":
-    tabs: {}
   "atom-package-deps":
     ignored: [
       "highlight-selected"
@@ -32,12 +32,6 @@
       "._*"
       "Thumbs.db"
       "desktop.ini"
-      "db-vol"
-      "env"
-      "js-vol"
-      "log-vol"
-      "mongo-vol"
-      "var"
       "*.py[c|o]"
       "*.min.js"
       ".tags"
@@ -47,7 +41,8 @@
   "ctags-status":
     outerScope: true
   editor:
-    fontSize: 16
+    fontFamily: "Ubuntu Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 20
     lineHeight: 1.1
     preferredLineLength: 130
     scrollPastEnd: true
@@ -96,7 +91,7 @@
   "linter-jshint": {}
   "linter-pylama":
     executablePath: "/home/silas/.local/bin/pylama"
-    ignoreErrorsAndWarnings: "E501,E0602"
+    ignoreErrorsAndWarnings: "E501"
     lintOnFly: false
     pylamaVersion: "external"
     useIsort: true
@@ -104,7 +99,7 @@
   "linter-pylint":
     disableTimeout: true
   "linter-ui-default":
-    panelHeight: 138.5
+    panelHeight: 198.5
     showPanel: true
   minimap:
     plugins:
@@ -120,6 +115,8 @@
       selectionDecorationsZIndex: 0
   "one-dark-ui":
     fontSize: 13
+  "project-manager":
+    includeGitRepositories: true
   "symbol-gen": {}
   "symbols-navigator":
     autoRevealOnStart: true
@@ -132,29 +129,16 @@
     findTheseTodos: [
       "TODO"
       "FIXME"
-    ]
-    ignoreThesePaths: [
-      "node_modules"
-      "vendor"
-      "bower_components"
-      "*.pdf"
-      "db-vol"
-      "js-vol"
-      "log-vol"
-      "mongo-vol"
-      "**/var/**"
-      "**/env/**"
-      "*.min.js"
-      "**/root/rh/**"
-      "**/root/esocial/**"
-      "**/root/standard/**"
-      "**/root/sispat/**"
-      "**/root/adm/**"
-      "**/root/engine/**"
-      "**/root/edocs/**"
-      "**/root/common/**"
-      "**/root/web/**"
-      "**/root/cesaf/**"
+      "CHANGED"
+      "XXX"
+      "IDEA"
+      "HACK"
+      "NOTE"
+      "REVIEW"
+      "NB"
+      "BUG"
+      "COMBAK"
+      "TEMP"
     ]
     sortAscending: false
     sortBy: "Type"
