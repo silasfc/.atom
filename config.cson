@@ -126,6 +126,7 @@
     autoToggle: true
   "todo-show":
     autoRefresh: false
+    exportAs: "Table"
     findTheseTodos: [
       "TODO"
       "FIXME"
