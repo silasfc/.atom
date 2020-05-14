@@ -23,6 +23,7 @@
       "linter-flake8"
       "linter-pylint"
       "wrap-guide"
+      "kite"
     ]
     ignoredNames: [
       ".git"
@@ -42,7 +43,7 @@
     outerScope: true
   editor:
     fontFamily: "Ubuntu Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
-    fontSize: 20
+    fontSize: 23
     lineHeight: 1.1
     preferredLineLength: 130
     scrollPastEnd: true

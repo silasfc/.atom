@@ -10,3 +10,5 @@ storage
 github.cson
 init.coffee
 nohup.out
+kite-config.json
+.atom-socket-secret*
